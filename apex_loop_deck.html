@@ -337,13 +337,17 @@
   <h2>Async Matching — the crisp-signal case.</h2>
   <div class="uc-slide">
     <div>
-      <span class="uc-tag">Matching agent · own loop</span>
-      <p class="what">A matching system with a <b>crisp accept/reject</b> signal. Ground truth is cheap, so the loop runs the <b>same principles with the trust machinery relaxed</b> — less judge-validation, faster promotion.</p>
-      <div class="uc-rows">
-        <div class="row"><span class="rk">Signal</span><span>crisp — accept / reject</span></div>
-        <div class="row"><span class="rk">Loop fit</span><span>same shape, lighter verification</span></div>
-      </div>
-      <div class="uc-todo">Sangam — add the system one-liner + your metric here.</div>
+      <span class="uc-tag">Matching agent · crisp signal · own loop</span>
+      <table class="realize">
+        <caption>Same six blocks — trust machinery relaxed</caption>
+        <tr><td class="blk">Capture</td><td class="rz">match decisions logged in production</td></tr>
+        <tr><td class="blk">Signal</td><td class="rz"><b>crisp accept / reject</b> — ground truth, no judges to validate</td></tr>
+        <tr><td class="blk">Diagnose</td><td class="rz">rank which match types are failing</td></tr>
+        <tr><td class="blk">Improve</td><td class="rz">optimizer adjusts the matching component</td></tr>
+        <tr><td class="blk">Prove</td><td class="rz">accept-rate before/after (lighter — signal is exact)</td></tr>
+        <tr class="gate"><td class="blk">Promote</td><td class="rz">human ships — faster gate, crisp evidence</td></tr>
+      </table>
+      <div class="uc-todo">Sangam — confirm the block details + drop in your metric.</div>
     </div>
     <div>
       <div class="videobox"><div class="ph"><div class="pi">▶</div>demo — Sangam to add</div></div>
@@ -359,13 +363,17 @@
   <h2>Buck Bronson — the objective-signal case.</h2>
   <div class="uc-slide">
     <div>
-      <span class="uc-tag">Coding agent · own loop</span>
-      <p class="what">A coding / dev agent where the signal is <b>objective</b> — tests, CI, review outcomes. An objective signal lets the loop promote <b>near-automatically</b>, with the human gate lighter than the fuzzy case.</p>
-      <div class="uc-rows">
-        <div class="row"><span class="rk">Signal</span><span>objective — tests / CI / review</span></div>
-        <div class="row"><span class="rk">Loop fit</span><span>same shape, near-automatic promote</span></div>
-      </div>
-      <div class="uc-todo">Akash — add the system one-liner + your metric here.</div>
+      <span class="uc-tag">Coding agent · objective signal · own loop</span>
+      <table class="realize">
+        <caption>Same six blocks — objective signal, near-auto promote</caption>
+        <tr><td class="blk">Capture</td><td class="rz">dev tasks + PRs the agent produced</td></tr>
+        <tr><td class="blk">Signal</td><td class="rz"><b>objective — tests / CI / review outcomes</b></td></tr>
+        <tr><td class="blk">Diagnose</td><td class="rz">rank the failure classes across runs</td></tr>
+        <tr><td class="blk">Improve</td><td class="rz">optimizer revises the agent's approach</td></tr>
+        <tr><td class="blk">Prove</td><td class="rz">pass-rate before/after on held-out tasks</td></tr>
+        <tr class="gate"><td class="blk">Promote</td><td class="rz">near-automatic — human gate is lightest here</td></tr>
+      </table>
+      <div class="uc-todo">Akash — confirm the block details + drop in your metric.</div>
     </div>
     <div>
       <div class="videobox"><div class="ph"><div class="pi">▶</div>demo — Akash to add</div></div>
