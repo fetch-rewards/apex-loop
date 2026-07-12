@@ -134,6 +134,15 @@
   .uc-rows .row{display:flex; gap:12px; margin:11px 0; font-size:17px; color:var(--lav); line-height:1.35}
   .uc-rows .rk{flex:0 0 118px; font-size:12px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--lime); padding-top:2px}
   .uc-todo{margin-top:16px; font-size:14px; font-style:italic; color:var(--lav-dim); border-left:3px solid var(--lav-dim); padding-left:12px}
+  /* per-use-case realization table: what each block IS for this case */
+  .realize{width:100%; border-collapse:collapse; margin:2px 0 16px}
+  .realize caption{text-align:left; font-size:12px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--lav-dim); padding-bottom:8px}
+  .realize td{padding:6px 0; border-bottom:1px solid rgba(211,200,234,.12); vertical-align:top; line-height:1.32}
+  .realize tr:last-child td{border-bottom:none}
+  .realize .blk{font-size:13px; font-weight:800; color:var(--lime); white-space:nowrap; padding-right:16px; width:1%}
+  .realize .rz{font-size:14.5px; color:var(--lav)}
+  .realize .rz b{color:var(--white); font-weight:700}
+  .realize tr.gate .blk{color:var(--orange)}
   .uc-metrics{display:flex; gap:12px; margin-top:6px}
   .uc-metrics .m{flex:1; border:1px solid var(--card-line); border-radius:11px; padding:12px 14px; background:var(--pur-card)}
   .uc-metrics .m .b{font-size:26px; font-weight:800; color:var(--lime); font-variant-numeric:tabular-nums}
@@ -293,8 +302,16 @@
   <h2>AI Assistant — the fuzzy-signal case.</h2>
   <div class="uc-slide">
     <div>
-      <span class="uc-tag">Shopping agent · own loop</span>
-      <p class="what">A conversational shopping assistant. Quality is <b>fuzzy</b> — judged by LLM judges + human labels, no clean pass/fail — so it runs the <b>full trust stack</b> (validate the judges, significance, a hard safety floor).</p>
+      <span class="uc-tag">Shopping agent · fuzzy signal · own loop</span>
+      <table class="realize">
+        <caption>The six blocks, realized here</caption>
+        <tr><td class="blk">Capture</td><td class="rz">497 real prod conversations, logged</td></tr>
+        <tr><td class="blk">Signal</td><td class="rz">13 LLM judges score each trace → composite</td></tr>
+        <tr><td class="blk">Diagnose</td><td class="rz"><b>validate the 13 judges vs human labels</b>, then rank what's failing</td></tr>
+        <tr><td class="blk">Improve</td><td class="rz">optimizer rewrites the prompt/component, sandboxed</td></tr>
+        <tr><td class="blk">Prove</td><td class="rz">before/after, 95% CI, hard safety floor</td></tr>
+        <tr class="gate"><td class="blk">Promote</td><td class="rz">human reads the templated report → ships or holds</td></tr>
+      </table>
       <div class="uc-metrics">
         <div class="m"><div class="b">+0.0404</div><div class="l">quality gain, significant</div></div>
         <div class="m p"><div class="b">HELD</div><div class="l">safety floor → not shipped</div></div>
