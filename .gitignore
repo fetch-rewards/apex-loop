@@ -1,0 +1,9 @@
+# Local render / export artifacts (source of truth is the .html)
+*.pdf
+
+# Local screenshot scratch
+*_slide*.png
+.playwright-mcp/
+
+# OS cruft
+.DS_Store

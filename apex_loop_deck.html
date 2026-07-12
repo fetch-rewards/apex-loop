@@ -46,6 +46,11 @@
     border-radius:0 12px 12px 0; font-size:21px; line-height:1.42; color:var(--white)}
   .callout.p{border-left-color:var(--orange); background:rgba(250,100,0,.12)}
   .hyp{font-size:20px; line-height:1.42; color:var(--lav); margin-top:14px}
+  .unknowns{margin-top:20px; border-top:1px solid rgba(211,200,234,.22); padding-top:15px}
+  .unknowns .uh{font-size:12.5px; font-weight:800; letter-spacing:.11em; text-transform:uppercase; color:var(--lav-dim,#9d8bc4); margin-bottom:9px}
+  .unknowns .urow{display:flex; flex-wrap:wrap; gap:9px}
+  .unknowns .u{font-size:14.5px; line-height:1.3; color:var(--lav); background:rgba(211,200,234,.07); border:1px solid rgba(211,200,234,.16); border-radius:9px; padding:8px 13px; flex:1 1 40%}
+  .unknowns .u b{color:var(--white); font-weight:700}
   .hyp .lbl{font-weight:800; color:var(--lime)}
 
   /* Problem: before/after scale diagram */
@@ -62,7 +67,7 @@
 
   /* Loop ring (8 stages, animated) */
   .ring-wrap{margin:auto 0; display:flex; justify-content:center}
-  .ring-wrap svg{max-height:452px; width:100%}
+  .ring-wrap svg{max-height:372px; width:100%}
   .edge{fill:none; stroke:#b9a6df; stroke-width:2.5; stroke-dasharray:6 8; stroke-linecap:round; animation:flow 1.2s linear infinite}
   .edge.gate{stroke:var(--orange); stroke-width:3}
   @keyframes flow{to{stroke-dashoffset:-28}}
@@ -141,7 +146,7 @@
     Prakash Chaudhary · Sangam Man Buddhacharya · Akash Bhapkar<br>
     Track: <span>Agentic Product Development</span> &nbsp;·&nbsp; Theme: <span>Scale the business</span>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">1 / 6</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">1 / 8</span></div>
 </section>
 
 <!-- 2 · PROBLEM -->
@@ -155,7 +160,8 @@
         <div class="pair"><span class="chip human">Human</span> ↔ <span class="chip agent">Agent</span></div>
         <div class="pair"><span class="chip human">Human</span> ↔ <span class="chip agent">Agent</span></div>
         <div class="pair"><span class="chip human">Human</span> ↔ <span class="chip agent">Agent</span></div>
-        <div class="many">one skilled human per agent, indefinitely -- cost grows linearly</div>
+        <div class="pair" style="opacity:.4"><span class="chip human">Human</span> ↔ <span class="chip agent">Agent</span></div>
+        <div class="many"><b style="color:var(--orange)">one human per agent × N, forever</b> — cost grows linearly with every agent you add</div>
       </div>
       <div class="arrow">→</div>
       <div class="panel apex">
@@ -166,7 +172,11 @@
         <div class="many">each agent gets its own loop, built from the same blueprint; a human stays only at the ship decision</div>
       </div>
     </div>
-    <div class="hyp"><span class="lbl">Hypothesis:</span> a standardized, human-governed loop turns agent failures into regression-tested candidate fixes -- without hand-tuning each agent. <span style="color:var(--lav-dim)">Metric: time from a detected failure to a proven, promotable improvement.</span></div>
+    <div class="hyp"><span class="lbl">Hypothesis:</span> a standardized, human-governed loop turns agent failures into regression-tested candidate fixes -- without hand-tuning each agent.</div>
+    <div style="margin-top:14px; display:inline-flex; align-items:center; gap:12px; padding:10px 16px; border:1px solid var(--card-line); border-radius:10px; background:var(--pur-card)">
+      <span style="font-size:12px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--lime)">We measure →</span>
+      <span style="font-size:16px; color:var(--lav)">time from a detected failure to a proven, promotable fix</span>
+    </div>
   </div>
   <div class="foot"><span>Apex Loop</span><span class="n">2 / 8</span></div>
 </section>
@@ -199,6 +209,7 @@
       <foreignObject x="120" y="55"  width="180" height="70"><div class="rn gate"><div class="rnn">8 · PROVE &amp; PROMOTE</div><div class="rnd">A/B + safety floor → human decides</div></div></foreignObject>
     </svg>
   </div>
+  <div class="callout" style="margin-top:2px; font-size:18px"><b>The honest part:</b> automating the cranks is the easy part -- the real work moves to the optimizer: authoring a fix that's actually good. And that doesn't generalize for free; a good optimizer takes real understanding of the specific problem.</div>
   <div class="foot"><span>Apex Loop</span><span class="n">3 / 8</span></div>
 </section>
 
@@ -311,6 +322,15 @@
       <li><b>Scales without headcount</b> — a loop maintains an agent instead of a person; humans stay only at the ship decision.</li>
       <li><b>End goal: generalize.</b> Near-term, any team can stand up its own loop from these principles; longer-term, a shared trust-layer infrastructure (scorer-validation, significance, safety floors) they build on.</li>
     </ul>
+    <div class="unknowns">
+      <div class="uh">Honest — a few open questions</div>
+      <div class="urow">
+        <div class="u">Can the <b>optimizer clear the bar unaided</b>, or does it still need a human author in the loop?</div>
+        <div class="u">How much <b>generalizes for free</b> vs needs per-problem understanding to port?</div>
+        <div class="u">How far do <b>noisy judges and a non-deterministic agent</b> move the proof — and what tightens it?</div>
+        <div class="u">Does the loop reach <b>beyond prompts</b> — tools, retrieval, routing — or stop there?</div>
+      </div>
+    </div>
   </div>
   <div class="foot"><span>Apex Loop</span><span class="n">8 / 8</span></div>
 </section>
