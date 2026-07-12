@@ -351,19 +351,26 @@
     <div>
       <span class="uc-tag">Coding agent · objective signal · own loop</span>
       <table class="realize">
-        <caption>Same six blocks — objective signal, near-auto promote</caption>
-        <tr><td class="blk">Capture</td><td class="rz">dev tasks + PRs the agent produced</td></tr>
-        <tr><td class="blk">Signal</td><td class="rz"><b>objective — tests / CI / review outcomes</b></td></tr>
-        <tr><td class="blk">Diagnose</td><td class="rz">rank the failure classes across runs</td></tr>
-        <tr><td class="blk">Improve</td><td class="rz">optimizer revises the agent's approach</td></tr>
-        <tr><td class="blk">Prove</td><td class="rz">pass-rate before/after on held-out tasks</td></tr>
-        <tr class="gate"><td class="blk">Promote</td><td class="rz">near-automatic — human gate is lightest here</td></tr>
+        <caption>Same six blocks — mixed signal, auto-promote with PR gate</caption>
+        <tr><td class="blk">Capture</td><td class="rz"><b>138 historical Buck PRs</b> across 5 repos, full diffs + metadata</td></tr>
+        <tr><td class="blk">Signal</td><td class="rz"><b>deterministic (CI / merge / tests) + 5 LLM judges</b> on each diff</td></tr>
+        <tr><td class="blk">Diagnose</td><td class="rz"><b>cluster 54 closed PRs</b> into error types, rank failure modes</td></tr>
+        <tr><td class="blk">Improve</td><td class="rz">Claude Sonnet reads diagnosis → <b>surgical patch, not a rewrite</b></td></tr>
+        <tr><td class="blk">Prove</td><td class="rz"><b>targeted re-score on golden set</b> — only the patched judges</td></tr>
+        <tr class="gate"><td class="blk">Promote</td><td class="rz">loop auto-opens a PR on buck-bronson · <b>human review required to merge</b></td></tr>
       </table>
-      <div class="uc-todo">Akash — confirm the block details + drop in your metric.</div>
+      <div class="uc-metrics">
+        <div class="m"><div class="b">+1.0</div><div class="l">PR description quality · 25 real PRs · 6 consecutive PASS verdicts</div></div>
+      </div>
     </div>
     <div>
-      <div class="videobox"><div class="ph"><div class="pi">▶</div>demo — Akash to add</div></div>
-      <div class="videocap">demo clip — owner to drop in</div>
+      <div class="videobox">
+        <video controls preload="metadata" poster="media/buck_bronson_demo_poster.png">
+          <source src="media/buck_bronson_demo.mp4" type="video/mp4">
+        </video>
+        <div class="ph" style="display:none"><div class="pi">▶</div>20-sec demo</div>
+      </div>
+      <div class="videocap">20-sec demo — the loop running on Buck Bronson</div>
     </div>
   </div>
   <div class="foot"><span>Apex Loop</span><span class="n">7 / 8</span></div>
