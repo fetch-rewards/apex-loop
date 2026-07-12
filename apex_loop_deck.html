@@ -84,6 +84,7 @@
   .epill.decide text{fill:#ff9a52}
   .epill rect{stroke-width:1}
   .today-tag{fill:var(--orange); font-size:13px; font-weight:800; letter-spacing:.01em}
+  .vision-tag{fill:#a6e06a; font-size:13px; font-weight:800; letter-spacing:.01em}
   .rn{box-sizing:border-box; height:100%; border:1px solid var(--card-line); border-top:3px solid var(--lime);
     border-radius:12px; padding:10px 12px; background:var(--pur-card); box-shadow:0 4px 14px rgba(0,0,0,.3)}
   .rn .rnn{font-size:12.5px; font-weight:800; color:var(--lime); letter-spacing:.02em}
@@ -159,7 +160,7 @@
     Akash Bhapkar · Prakash Chaudhary · Sangam Man Buddhacharya<br>
     Track: <span>Agentic Product Development</span> &nbsp;·&nbsp; Theme: <span>Scale the business</span>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">1 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">1 / 9</span></div>
 </section>
 
 <!-- 2 · PROBLEM -->
@@ -191,7 +192,7 @@
       <span style="font-size:16px; color:var(--lav)">time from a detected failure to a proven, promotable fix</span>
     </div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">2 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">2 / 9</span></div>
 </section>
 
 <!-- 3 · THE LOOP -->
@@ -234,7 +235,50 @@
     </svg>
   </div>
   <div class="callout" style="margin-top:2px; font-size:18px"><b>The honest part:</b> automating the cranks is the easy part -- the real work moves to the optimizer: authoring a fix that's actually good. And that doesn't generalize for free; a good optimizer takes real understanding of the specific problem.</div>
-  <div class="foot"><span>Apex Loop</span><span class="n">3 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">3 / 9</span></div>
+</section>
+
+<!-- 4 · THE LOOP — VISION (AUTOMATED) -->
+<section class="slide">
+  <p class="kicker">01 · Innovation <span class="arc">— the loop, automated</span></p>
+  <h2>The vision: the cranks run themselves. The human only decides what ships.</h2>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 1000 470" role="img" aria-label="The Apex Loop, automated: every stage runs itself, with a single human gate remaining at Prove and Promote.">
+      <path class="edge auto" d="M 587,55 L 703,75"/>
+      <path class="edge auto" d="M 801,134 L 817,192"/>
+      <path class="edge auto" d="M 817,278 L 801,336"/>
+      <path class="edge auto" d="M 703,396 L 587,418"/>
+      <path class="edge auto" d="M 413,418 L 297,396"/>
+      <path class="edge auto" d="M 199,336 L 183,278"/>
+      <path class="edge auto" d="M 183,192 L 199,134"/>
+      <path class="edge gate" d="M 297,75 L 413,55"/>
+
+      <g class="epill auto"><rect x="622" y="28" width="46" height="19" rx="9"/><text x="645" y="41.5" text-anchor="middle">auto</text></g>
+      <g class="epill auto"><rect x="838" y="153" width="46" height="19" rx="9"/><text x="861" y="166.5" text-anchor="middle">auto</text></g>
+      <g class="epill auto"><rect x="838" y="297" width="46" height="19" rx="9"/><text x="861" y="310.5" text-anchor="middle">auto</text></g>
+      <g class="epill auto"><rect x="622" y="428" width="46" height="19" rx="9"/><text x="645" y="441.5" text-anchor="middle">auto</text></g>
+      <g class="epill auto"><rect x="332" y="428" width="46" height="19" rx="9"/><text x="355" y="441.5" text-anchor="middle">auto</text></g>
+      <g class="epill auto"><rect x="108" y="297" width="46" height="19" rx="9"/><text x="131" y="310.5" text-anchor="middle">auto</text></g>
+      <g class="epill auto"><rect x="108" y="153" width="46" height="19" rx="9"/><text x="131" y="166.5" text-anchor="middle">auto</text></g>
+      <g class="epill decide"><rect x="326" y="28" width="58" height="19" rx="9"/><text x="355" y="41.5" text-anchor="middle">decide</text></g>
+
+      <circle cx="500" cy="222" r="80" fill="rgba(232,245,158,.10)" stroke="var(--lime)" stroke-width="1.5"/>
+      <text x="500" y="205" text-anchor="middle" font-size="15" font-weight="800" fill="var(--lime)">SHARED MEMORY</text>
+      <text x="500" y="227" text-anchor="middle" font-size="12.5" fill="#d3c8ea">golden + learning</text>
+      <text x="500" y="244" text-anchor="middle" font-size="12.5" fill="#d3c8ea">+ scorer-val sets</text>
+      <text x="500" y="322" text-anchor="middle" class="vision-tag">Vision: the cranks run themselves. One human decides what ships.</text>
+      <foreignObject x="410" y="5"   width="180" height="70"><div class="rn"><div class="rnn">1 · SERVE</div><div class="rnd">any deployed agent, in production</div></div></foreignObject>
+      <foreignObject x="700" y="55"  width="180" height="70"><div class="rn"><div class="rnn">2 · OBSERVE</div><div class="rnd">log every inference; collect signal</div></div></foreignObject>
+      <foreignObject x="738" y="200" width="180" height="70"><div class="rn"><div class="rnn">3 · JUDGE</div><div class="rnd">score with LLM judges</div></div></foreignObject>
+      <foreignObject x="700" y="345" width="180" height="70"><div class="rn"><div class="rnn">4 · ANNOTATE</div><div class="rnd">humans label a sample</div></div></foreignObject>
+      <foreignObject x="410" y="400" width="180" height="70"><div class="rn"><div class="rnn">5 · CALIBRATE</div><div class="rnd">validate judges vs humans</div></div></foreignObject>
+      <foreignObject x="120" y="345" width="180" height="70"><div class="rn"><div class="rnn">6 · DIAGNOSE</div><div class="rnd">what's failing, what to change</div></div></foreignObject>
+      <foreignObject x="82"  y="200" width="180" height="70"><div class="rn"><div class="rnn">7 · OPTIMIZE</div><div class="rnd">rewrite, sandboxed, safety frozen</div></div></foreignObject>
+      <foreignObject x="120" y="55"  width="180" height="70"><div class="rn gate"><div class="rnn">8 · PROVE &amp; PROMOTE</div><div class="rnd">A/B + safety floor → human decides</div></div></foreignObject>
+    </svg>
+  </div>
+  <div class="callout" style="margin-top:2px; font-size:18px"><b>Same loop, less hand-cranking:</b> every stage the human turns today becomes automated -- but the ship decision stays human, on purpose. The engineering effort moves from turning cranks to building an optimizer good enough to trust.</div>
+  <div class="foot"><span>Apex Loop</span><span class="n">4 / 9</span></div>
 </section>
 
 <!-- 4 · PROOF -->
@@ -251,7 +295,7 @@
     </div>
     <div class="callout p"><b>The differentiator:</b> a quality gain never buys back a safety drop. That refusal is what makes it safe to trust near production.</div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">4 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">5 / 9</span></div>
 </section>
 
 <!-- 5 · USE CASE: AI ASSISTANT -->
@@ -277,7 +321,7 @@
       <div class="videocap">20-sec demo — the loop running on the AI Assistant</div>
     </div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">5 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">6 / 9</span></div>
 </section>
 
 <!-- 6 · USE CASE: ASYNC MATCHING -->
@@ -299,7 +343,7 @@
       <div class="videocap">demo clip — owner to drop in</div>
     </div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">6 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">7 / 9</span></div>
 </section>
 
 <!-- 7 · USE CASE: BUCK BRONSON -->
@@ -321,7 +365,7 @@
       <div class="videocap">demo clip — owner to drop in</div>
     </div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">7 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">8 / 9</span></div>
 </section>
 
 <!-- 8 · IMPACT -->
@@ -356,7 +400,7 @@
       </div>
     </div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">8 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">9 / 9</span></div>
 </section>
 
 <script>
