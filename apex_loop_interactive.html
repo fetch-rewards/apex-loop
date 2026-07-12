@@ -95,22 +95,20 @@
 </div>
 
 <script>
-const CX=500, CY=340, RX=340, RY=250, START=-90;
+const N=6, STEP=360/N, CX=500, CY=340, RX=340, RY=250, START=-90;
 const NODES = [
-  {n:3, nm:"Judge",           dsc:"Automated reviewers score every output.",       cat:"Automated review", c:"#7b3ff2", catbg:"#efe6ff"},
-  {n:4, nm:"Annotate",        dsc:"Humans label a prioritized sample.",             cat:"Human review",     c:"#e0559b", catbg:"#ffe4f2"},
-  {n:5, nm:"Calibrate",       dsc:"Judge-vs-human calibration; labels augment the datasets.", cat:"Calibrate + augment", c:"#2bb5a0", catbg:"#d6f5ef"},
-  {n:6, nm:"Diagnose",        dsc:"Synthesize a report: what's failing, what to change.", cat:"Report",       c:"#e8a13c", catbg:"#fdeecf"},
-  {n:7, nm:"Optimize",        dsc:"The optimizer proposes AND applies changes, then proves them.", cat:"Optimizer engine", c:"#4a9e3a", catbg:"#dcf0d4", autoHi:true},
-  {n:8, nm:"Prove & Promote", dsc:"Before/after on both datasets → human promotes.", cat:"Experiment + gate", c:"#fa8c3c", catbg:"#ffe6d0", gate:true},
-  {n:1, nm:"Serve",           dsc:"Any deployed agent, in maintenance mode.",       cat:"Production",       c:"#6a35b0", catbg:"#ece1fb"},
-  {n:2, nm:"Observe",         dsc:"Log every inference; collect any real-world signal.", cat:"Signal",       c:"#3b9ae0", catbg:"#dceffb"},
+  {n:1, nm:"Capture",  dsc:"Serve + log every inference in production.",              cat:"Production",       c:"#6a35b0", catbg:"#ece1fb"},
+  {n:2, nm:"Signal",   dsc:"Automated judges score every output.",                    cat:"Automated review", c:"#3b9ae0", catbg:"#dceffb"},
+  {n:3, nm:"Diagnose", dsc:"Validate the judges vs human labels, then report what's failing.", cat:"Calibrate + report", c:"#2bb5a0", catbg:"#d6f5ef"},
+  {n:4, nm:"Improve",  dsc:"The optimizer proposes AND applies a change, sandboxed.",  cat:"Optimizer engine", c:"#4a9e3a", catbg:"#dcf0d4", autoHi:true},
+  {n:5, nm:"Prove",    dsc:"Before/after on golden + learning sets; CI + safety floor.", cat:"Experiment",     c:"#e8a13c", catbg:"#fdeecf"},
+  {n:6, nm:"Promote",  dsc:"Human reads the report → ships or holds.",                 cat:"Human gate",       c:"#fa8c3c", catbg:"#ffe6d0", gate:true},
 ];
-const EDGES_MANUAL = ["auto","manual","manual","manual","manual","decide","auto","auto"];
-const EDGES_AUTO   = ["auto","auto","auto","auto","auto","decide","auto","auto"];
+const EDGES_MANUAL = ["auto","manual","manual","decide","auto","auto"];
+const EDGES_AUTO   = ["auto","auto","auto","decide","auto","auto"];
 
-function pos(i){ const a=(START+45*i)*Math.PI/180; return [CX+RX*Math.cos(a), CY+RY*Math.sin(a)]; }
-function mid(i){ const a=(START+45*i+22.5)*Math.PI/180; return [CX+RX*Math.cos(a), CY+RY*Math.sin(a)]; }
+function pos(i){ const a=(START+STEP*i)*Math.PI/180; return [CX+RX*Math.cos(a), CY+RY*Math.sin(a)]; }
+function mid(i){ const a=(START+STEP*i+STEP/2)*Math.PI/180; return [CX+RX*Math.cos(a), CY+RY*Math.sin(a)]; }
 
 const nodesEl=document.getElementById('nodes'), pillsEl=document.getElementById('pills'), edgesEl=document.getElementById('edges');
 
@@ -130,8 +128,8 @@ NODES.forEach((nd,i)=>{
 
 function drawEdges(labels){
   edgesEl.innerHTML=''; pillsEl.innerHTML='';
-  for(let i=0;i<8;i++){
-    const [x0,y0]=pos(i), [x1,y1]=pos((i+1)%8);
+  for(let i=0;i<N;i++){
+    const [x0,y0]=pos(i), [x1,y1]=pos((i+1)%N);
     const t=0.16;
     const sx=x0+(x1-x0)*t, sy=y0+(y1-y0)*t, ex=x1-(x1-x0)*t, ey=y1-(y1-y0)*t;
     const [mx,my]=mid(i);
