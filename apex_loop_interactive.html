@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apex Loop — Interactive</title>
+<style>
+  :root{
+    --ink:#2a2438; --soft:#6b6480; --faint:#9a93ad; --line:#e6e2ee; --bg:#f6f4fa; --white:#fff;
+    --manual:#f4c542; --manual-bg:#fdf3d0; --manual-ink:#8a6a10;
+    --auto:#8fd14f; --auto-bg:#e6f5d6; --auto-ink:#4a7a1e;
+    --decide:#fa8c3c; --decide-bg:#ffe6d0; --decide-ink:#a8520f;
+    --pur:#6a35b0;
+    --sans:-apple-system,"Segoe UI",Inter,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); font-family:var(--sans); color:var(--ink)}
+  .wrap{max-width:1040px; margin:0 auto; padding:26px 24px 40px}
+  h1.lead{font-size:22px; font-weight:600; color:var(--soft); margin:0 0 20px; letter-spacing:-.01em}
+  .controls{display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom:8px}
+  .ctl-label{font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-right:2px}
+  .seg{display:inline-flex; background:var(--white); border:1px solid var(--line); border-radius:999px; padding:5px; box-shadow:0 2px 8px rgba(40,30,60,.06)}
+  .seg button{border:none; background:none; font:inherit; font-size:15px; font-weight:700; color:var(--soft); padding:9px 20px; border-radius:999px; cursor:pointer}
+  .seg button.on{background:var(--pur); color:#fff}
+  .stage{position:relative; margin:22px auto 0; width:1000px; height:700px}
+  svg.edges{position:absolute; inset:0; width:100%; height:100%; pointer-events:none}
+  .edge{fill:none; stroke:#c7bfe0; stroke-width:2.5; stroke-dasharray:6 7; stroke-linecap:round}
+  .flow{animation:flow 1.1s linear infinite}
+  @keyframes flow{to{stroke-dashoffset:-26}}
+  .node{position:absolute; width:216px; transform:translate(-50%,-50%); background:var(--white);
+    border:1px solid var(--line); border-radius:16px; padding:15px 17px; box-shadow:0 6px 20px rgba(40,30,60,.09)}
+  .node .top{display:flex; align-items:center; gap:9px}
+  .node .badge{width:26px; height:26px; border-radius:50%; color:#fff; font-weight:800; font-size:14px; display:flex; align-items:center; justify-content:center; flex:0 0 auto}
+  .node .nm{font-size:17px; font-weight:800}
+  .node .dsc{font-size:13px; color:var(--soft); line-height:1.32; margin:8px 0 10px}
+  .node .cat{font-size:10.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:3px 9px; border-radius:6px; display:inline-block}
+  .node.gate{border:2px solid var(--decide)}
+  .node.auto-hi{border:2px solid var(--auto)}
+  .flag{position:absolute; top:-11px; right:14px; font-size:10px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#fff; padding:3px 9px; border-radius:7px}
+  .flag.decide{background:var(--decide)} .flag.auto{background:var(--auto-ink)}
+  .pill{position:absolute; transform:translate(-50%,-50%); font-size:11px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:4px 11px; border-radius:999px; border:1px solid transparent}
+  .pill.manual{background:var(--manual-bg); color:var(--manual-ink); border-color:#ebd68f}
+  .pill.auto{background:var(--auto-bg); color:var(--auto-ink); border-color:#bfe39a}
+  .pill.decide{background:var(--decide-bg); color:var(--decide-ink); border-color:#f4c39a}
+  .center{position:absolute; left:500px; top:340px; transform:translate(-50%,-50%); width:300px;
+    background:var(--white); border:1px solid var(--line); border-radius:18px; padding:18px 20px; box-shadow:0 8px 26px rgba(40,30,60,.10); text-align:center}
+  .center .ck{font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--pur); margin-bottom:5px}
+  .center .ch{font-size:19px; font-weight:800; margin-bottom:12px}
+  .center .mem{display:flex; gap:10px}
+  .center .box{flex:1; border:1px solid var(--line); border-radius:11px; padding:10px 11px; text-align:left; background:var(--bg)}
+  .center .box .bh{font-size:13px; font-weight:800; display:flex; align-items:center; gap:6px}
+  .center .box .dot{width:8px; height:8px; border-radius:50%}
+  .center .box .bd{font-size:11.5px; color:var(--soft); line-height:1.3; margin-top:4px}
+  .center .sub{font-size:14px; font-weight:800; margin-top:13px; line-height:1.35}
+  .center .sub.manual{color:var(--decide-ink)} .center .sub.auto{color:var(--auto-ink)}
+  .legend{display:flex; gap:28px; flex-wrap:wrap; justify-content:center; margin-top:26px; padding-top:20px; border-top:1px solid var(--line); font-size:15px; color:var(--soft)}
+  .legend .item{display:flex; align-items:center; gap:9px}
+  .legend .sw{width:18px; height:18px; border-radius:5px}
+  .legend b{color:var(--ink)}
+  .foot{text-align:center; color:var(--faint); font-size:14px; margin-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="lead">A shared runbook: define the loop once, let every project plug in its own pieces.</h1>
+  <div class="controls">
+    <span class="ctl-label">Maturity</span>
+    <div class="seg" id="maturity">
+      <button data-m="manual" class="on">Today · manual</button>
+      <button data-m="auto">Vision · automated</button>
+    </div>
+  </div>
+
+  <div class="stage">
+    <svg class="edges" viewBox="0 0 1000 700" id="edges"></svg>
+    <div id="nodes"></div>
+    <div id="pills"></div>
+    <div class="center">
+      <div class="ck">Maintenance mode</div>
+      <div class="ch">Shared memory of the loop</div>
+      <div class="mem">
+        <div class="box"><div class="bh"><span class="dot" style="background:#3ba99c"></span>Golden set</div><div class="bd">Curated regression anchor. Guards against backsliding.</div></div>
+        <div class="box"><div class="bh"><span class="dot" style="background:#5aa54a"></span>Learning set</div><div class="bd">Grows from production. Proves real-world fixes.</div></div>
+      </div>
+      <div class="sub manual" id="csub">Today: a human turns every crank between the machines.</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="item"><span class="sw" style="background:var(--manual)"></span><b>Manual</b> — a person turns the crank</div>
+    <div class="item"><span class="sw" style="background:var(--auto)"></span><b>Auto</b> — the system does it</div>
+    <div class="item"><span class="sw" style="background:var(--decide)"></span><b>Decide</b> — the one human call</div>
+  </div>
+  <div class="foot">Same loop, any use case plugs in its own pieces.</div>
+</div>
+
+<script>
+const CX=500, CY=340, RX=340, RY=250, START=-90;
+const NODES = [
+  {n:3, nm:"Judge",           dsc:"Automated reviewers score every output.",       cat:"Automated review", c:"#7b3ff2", catbg:"#efe6ff"},
+  {n:4, nm:"Annotate",        dsc:"Humans label a prioritized sample.",             cat:"Human review",     c:"#e0559b", catbg:"#ffe4f2"},
+  {n:5, nm:"Calibrate",       dsc:"Judge-vs-human calibration; labels augment the datasets.", cat:"Calibrate + augment", c:"#2bb5a0", catbg:"#d6f5ef"},
+  {n:6, nm:"Diagnose",        dsc:"Synthesize a report: what's failing, what to change.", cat:"Report",       c:"#e8a13c", catbg:"#fdeecf"},
+  {n:7, nm:"Optimize",        dsc:"The optimizer proposes AND applies changes, then proves them.", cat:"Optimizer engine", c:"#4a9e3a", catbg:"#dcf0d4", autoHi:true},
+  {n:8, nm:"Prove & Promote", dsc:"Before/after on both datasets → human promotes.", cat:"Experiment + gate", c:"#fa8c3c", catbg:"#ffe6d0", gate:true},
+  {n:1, nm:"Serve",           dsc:"Any deployed agent, in maintenance mode.",       cat:"Production",       c:"#6a35b0", catbg:"#ece1fb"},
+  {n:2, nm:"Observe",         dsc:"Log every inference; collect any real-world signal.", cat:"Signal",       c:"#3b9ae0", catbg:"#dceffb"},
+];
+const EDGES_MANUAL = ["auto","manual","manual","manual","manual","decide","auto","auto"];
+const EDGES_AUTO   = ["auto","auto","auto","auto","auto","decide","auto","auto"];
+
+function pos(i){ const a=(START+45*i)*Math.PI/180; return [CX+RX*Math.cos(a), CY+RY*Math.sin(a)]; }
+function mid(i){ const a=(START+45*i+22.5)*Math.PI/180; return [CX+RX*Math.cos(a), CY+RY*Math.sin(a)]; }
+
+const nodesEl=document.getElementById('nodes'), pillsEl=document.getElementById('pills'), edgesEl=document.getElementById('edges');
+
+NODES.forEach((nd,i)=>{
+  const [x,y]=pos(i);
+  const el=document.createElement('div');
+  el.className='node'+(nd.gate?' gate':'')+(nd.autoHi?' auto-hi':'');
+  el.style.left=x+'px'; el.style.top=y+'px';
+  el.innerHTML =
+    (nd.gate?'<span class="flag decide">You decide</span>':'')+
+    (nd.autoHi?'<span class="flag auto">Autonomous</span>':'')+
+    '<div class="top"><span class="badge" style="background:'+nd.c+'">'+nd.n+'</span><span class="nm">'+nd.nm+'</span></div>'+
+    '<div class="dsc">'+nd.dsc+'</div>'+
+    '<span class="cat" style="background:'+nd.catbg+';color:'+nd.c+'">'+nd.cat+'</span>';
+  nodesEl.appendChild(el);
+});
+
+function drawEdges(labels){
+  edgesEl.innerHTML=''; pillsEl.innerHTML='';
+  for(let i=0;i<8;i++){
+    const [x0,y0]=pos(i), [x1,y1]=pos((i+1)%8);
+    const t=0.16;
+    const sx=x0+(x1-x0)*t, sy=y0+(y1-y0)*t, ex=x1-(x1-x0)*t, ey=y1-(y1-y0)*t;
+    const [mx,my]=mid(i);
+    const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d',`M ${sx} ${sy} Q ${mx} ${my} ${ex} ${ey}`);
+    p.setAttribute('class','edge flow');
+    edgesEl.appendChild(p);
+    const lab=labels[i];
+    const pill=document.createElement('div');
+    pill.className='pill '+lab;
+    pill.style.left=mx+'px'; pill.style.top=my+'px';
+    pill.textContent=lab;
+    pillsEl.appendChild(pill);
+  }
+}
+function setMaturity(m){
+  drawEdges(m==='manual'?EDGES_MANUAL:EDGES_AUTO);
+  const sub=document.getElementById('csub');
+  if(m==='manual'){ sub.className='sub manual'; sub.textContent='Today: a human turns every crank between the machines.'; }
+  else { sub.className='sub auto'; sub.textContent='Vision: the cranks run themselves. The human only decides what ships.'; }
+  document.querySelectorAll('#maturity button').forEach(b=>b.classList.toggle('on', b.dataset.m===m));
+}
+document.querySelectorAll('#maturity button').forEach(b=>b.onclick=()=>setMaturity(b.dataset.m));
+setMaturity('manual');
+</script>
+</body>
+</html>

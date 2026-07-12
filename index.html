@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apex Loop — Team 175</title>
+<style>
+  :root{
+    --pur-deep:#2f1364; --pur:#4a2287; --pur-bright:#6a35b0;
+    --lime:#e8f59e; --white:#fff; --lav:#cdbfe6; --lav-dim:#9d8bc4; --card:#3a1c73; --line:rgba(205,191,230,.2);
+    --sans:-apple-system,"Segoe UI",Inter,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; min-height:100vh; font-family:var(--sans); color:var(--white);
+    background:radial-gradient(120% 130% at 85% 10%, var(--pur-bright), var(--pur) 45%, var(--pur-deep));
+    display:flex; align-items:center; justify-content:center; padding:48px 24px}
+  .wrap{max-width:840px; width:100%}
+  .kick{font-size:14px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--lime); margin:0 0 8px}
+  h1{font-size:64px; line-height:1; margin:0 0 12px; color:var(--lime); letter-spacing:-.02em}
+  .sub{font-size:21px; color:var(--lav); line-height:1.4; margin:0 0 8px; max-width:60ch}
+  .wip{display:inline-block; font-size:12px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--lime); border:1px solid var(--line); border-radius:999px; padding:5px 13px; margin:14px 0 30px}
+  .grid{display:grid; gap:16px}
+  a.card{display:block; text-decoration:none; color:inherit; background:var(--card); border:1px solid var(--line);
+    border-left:4px solid var(--lime); border-radius:14px; padding:20px 24px; transition:transform .12s, border-color .12s}
+  a.card:hover{transform:translateY(-2px); border-left-color:#fff}
+  a.card .t{font-size:22px; font-weight:800; color:var(--white)}
+  a.card .d{font-size:15.5px; color:var(--lav); line-height:1.4; margin-top:5px}
+  a.card .arrow{float:right; color:var(--lime); font-size:22px; font-weight:800}
+  .foot{margin-top:30px; font-size:13.5px; color:var(--lav-dim); line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kick">Team 175 · Innovation Week 2026</p>
+  <h1>Apex Loop</h1>
+  <p class="sub">A self-improvement loop that keeps AI agents good — automatically, with a human at the one decision that matters.</p>
+  <span class="wip">Work in progress · iterating</span>
+
+  <div class="grid">
+    <a class="card" href="apex_loop_interactive.html">
+      <span class="arrow">→</span>
+      <div class="t">The loop — interactive</div>
+      <div class="d">The eight-stage loop with a Today-manual / Vision-automated toggle. Best opened live.</div>
+    </a>
+    <a class="card" href="apex_loop_deck.html">
+      <span class="arrow">→</span>
+      <div class="t">Pitch deck</div>
+      <div class="d">The 6-slide Innovation → Execution → Impact story. Scroll or present fullscreen.</div>
+    </a>
+    <a class="card" href="apex_loop_report.html">
+      <span class="arrow">→</span>
+      <div class="t">Full report</div>
+      <div class="d">The complete write-up: the general loop, our use case, the real run, and findings.</div>
+    </a>
+  </div>
+
+  <p class="foot">Fetch org members only (SSO). This is a living draft — the links always show the latest as we iterate.</p>
+</div>
+</body>
+</html>
