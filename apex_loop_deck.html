@@ -106,6 +106,20 @@
   ul.tight li{font-size:20px; line-height:1.4; margin:0 0 12px; padding-left:28px; position:relative; color:var(--lav)}
   ul.tight li::before{content:""; position:absolute; left:0; top:10px; width:11px; height:11px; border-radius:3px; background:var(--lime)}
 
+  /* per-use-case slide: system explanation (left) + demo (right) */
+  .uc-slide{display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center; margin:auto 0}
+  .uc-tag{font-size:13px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:5px 13px; border-radius:999px; display:inline-block; background:rgba(232,245,158,.14); color:var(--lime); margin-bottom:14px}
+  .uc-slide .what{font-size:22px; color:var(--lav); line-height:1.4; margin:0 0 18px}
+  .uc-slide .what b{color:var(--white)}
+  .uc-rows .row{display:flex; gap:12px; margin:11px 0; font-size:17px; color:var(--lav); line-height:1.35}
+  .uc-rows .rk{flex:0 0 118px; font-size:12px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--lime); padding-top:2px}
+  .uc-todo{margin-top:16px; font-size:14px; font-style:italic; color:var(--lav-dim); border-left:3px solid var(--lav-dim); padding-left:12px}
+  .uc-metrics{display:flex; gap:12px; margin-top:6px}
+  .uc-metrics .m{flex:1; border:1px solid var(--card-line); border-radius:11px; padding:12px 14px; background:var(--pur-card)}
+  .uc-metrics .m .b{font-size:26px; font-weight:800; color:var(--lime); font-variant-numeric:tabular-nums}
+  .uc-metrics .m.p .b{color:var(--orange)}
+  .uc-metrics .m .l{font-size:12px; color:var(--lav); line-height:1.25; margin-top:3px}
+
   @media print{
     @page{size:1280px 720px; margin:0}
     body{background:none}
@@ -146,13 +160,15 @@
       <div class="arrow">→</div>
       <div class="panel apex">
         <div class="phead">With Apex Loop</div>
-        <div class="pair"><span class="chip loop">1 loop</span> → <span class="chip agent">Agent</span> <span class="chip agent">Agent</span> <span class="chip agent">Agent</span></div>
-        <div class="many">the same loop maintains many agents; a human stays only at the ship decision</div>
+        <div class="pair"><span class="chip loop">loop</span> → <span class="chip agent">Agent</span></div>
+        <div class="pair"><span class="chip loop">loop</span> → <span class="chip agent">Agent</span></div>
+        <div class="pair"><span class="chip loop">loop</span> → <span class="chip agent">Agent</span></div>
+        <div class="many">each agent gets its own loop, built from the same blueprint; a human stays only at the ship decision</div>
       </div>
     </div>
     <div class="hyp"><span class="lbl">Hypothesis:</span> a standardized, human-governed loop turns agent failures into regression-tested candidate fixes -- without hand-tuning each agent. <span style="color:var(--lav-dim)">Metric: time from a detected failure to a proven, promotable improvement.</span></div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">2 / 6</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">2 / 8</span></div>
 </section>
 
 <!-- 3 · THE LOOP -->
@@ -183,7 +199,7 @@
       <foreignObject x="120" y="55"  width="180" height="70"><div class="rn gate"><div class="rnn">8 · PROVE &amp; PROMOTE</div><div class="rnd">A/B + safety floor → human decides</div></div></foreignObject>
     </svg>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">3 / 6</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">3 / 8</span></div>
 </section>
 
 <!-- 4 · PROOF -->
@@ -200,59 +216,103 @@
     </div>
     <div class="callout p"><b>The differentiator:</b> a quality gain never buys back a safety drop. That refusal is what makes it safe to trust near production.</div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">4 / 6</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">4 / 8</span></div>
 </section>
 
-<!-- 5 · USE CASES + VIDEO -->
+<!-- 5 · USE CASE: AI ASSISTANT -->
 <section class="slide">
-  <p class="kicker">02 · Execution <span class="arc">— three agents, one loop</span></p>
-  <h2>Same loop, three different agents. The signal changes; the loop doesn't.</h2>
-  <div class="body-center">
-    <div class="exec">
-      <div class="cards">
-        <div class="uc-card"><div class="uh">AI Assistant <span style="font-weight:400;color:var(--lav-dim);font-size:14px">· shopping agent</span></div><div class="um"><em>Fuzzy signal</em> — LLM judges + labels. Full trust stack.</div></div>
-        <div class="uc-card"><div class="uh">Async Matching <span style="font-weight:400;color:var(--lav-dim);font-size:14px">· matching agent</span></div><div class="um"><em>Crisp signal</em> — accept / reject. Trust machinery relaxed.</div></div>
-        <div class="uc-card"><div class="uh">Buck Bronson <span style="font-weight:400;color:var(--lav-dim);font-size:14px">· coding agent</span></div><div class="um"><em>Objective signal</em> — tests / CI / review. Near-automatic promote.</div></div>
-      </div>
-      <div>
-        <div class="videobox">
-          <video controls preload="metadata" poster="media/apex_loop_demo_poster.png">
-            <source src="media/apex_loop_demo.mp4" type="video/mp4">
-          </video>
-          <div class="ph" style="display:none"><div class="pi">▶</div>20-sec demo: the loop running</div>
-        </div>
-        <div class="videocap">20-sec demo — the loop running on a real agent</div>
+  <p class="kicker">02 · Execution <span class="arc">— use case 1 of 3</span></p>
+  <h2>AI Assistant — the fuzzy-signal case.</h2>
+  <div class="uc-slide">
+    <div>
+      <span class="uc-tag">Shopping agent · own loop</span>
+      <p class="what">A conversational shopping assistant. Quality is <b>fuzzy</b> — judged by LLM judges + human labels, no clean pass/fail — so it runs the <b>full trust stack</b> (validate the judges, significance, a hard safety floor).</p>
+      <div class="uc-metrics">
+        <div class="m"><div class="b">+0.0404</div><div class="l">quality gain, significant</div></div>
+        <div class="m p"><div class="b">HELD</div><div class="l">safety floor → not shipped</div></div>
       </div>
     </div>
-    <div class="callout"><b>The point:</b> three substantially different systems, one loop shape. That is the evidence it generalizes across teams.</div>
+    <div>
+      <div class="videobox">
+        <video controls preload="metadata" poster="media/apex_loop_demo_poster.png">
+          <source src="media/apex_loop_demo.mp4" type="video/mp4">
+        </video>
+        <div class="ph" style="display:none"><div class="pi">▶</div>20-sec demo</div>
+      </div>
+      <div class="videocap">20-sec demo — the loop running on the AI Assistant</div>
+    </div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">5 / 6</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">5 / 8</span></div>
 </section>
 
-<!-- 6 · IMPACT -->
+<!-- 6 · USE CASE: ASYNC MATCHING -->
+<section class="slide">
+  <p class="kicker">02 · Execution <span class="arc">— use case 2 of 3</span></p>
+  <h2>Async Matching — the crisp-signal case.</h2>
+  <div class="uc-slide">
+    <div>
+      <span class="uc-tag">Matching agent · own loop</span>
+      <p class="what">A matching system with a <b>crisp accept/reject</b> signal. Ground truth is cheap, so the loop runs the <b>same principles with the trust machinery relaxed</b> — less judge-validation, faster promotion.</p>
+      <div class="uc-rows">
+        <div class="row"><span class="rk">Signal</span><span>crisp — accept / reject</span></div>
+        <div class="row"><span class="rk">Loop fit</span><span>same shape, lighter verification</span></div>
+      </div>
+      <div class="uc-todo">Sangam — add the system one-liner + your metric here.</div>
+    </div>
+    <div>
+      <div class="videobox"><div class="ph"><div class="pi">▶</div>demo — Sangam to add</div></div>
+      <div class="videocap">demo clip — owner to drop in</div>
+    </div>
+  </div>
+  <div class="foot"><span>Apex Loop</span><span class="n">6 / 8</span></div>
+</section>
+
+<!-- 7 · USE CASE: BUCK BRONSON -->
+<section class="slide">
+  <p class="kicker">02 · Execution <span class="arc">— use case 3 of 3</span></p>
+  <h2>Buck Bronson — the objective-signal case.</h2>
+  <div class="uc-slide">
+    <div>
+      <span class="uc-tag">Coding agent · own loop</span>
+      <p class="what">A coding / dev agent where the signal is <b>objective</b> — tests, CI, review outcomes. An objective signal lets the loop promote <b>near-automatically</b>, with the human gate lighter than the fuzzy case.</p>
+      <div class="uc-rows">
+        <div class="row"><span class="rk">Signal</span><span>objective — tests / CI / review</span></div>
+        <div class="row"><span class="rk">Loop fit</span><span>same shape, near-automatic promote</span></div>
+      </div>
+      <div class="uc-todo">Akash — add the system one-liner + your metric here.</div>
+    </div>
+    <div>
+      <div class="videobox"><div class="ph"><div class="pi">▶</div>demo — Akash to add</div></div>
+      <div class="videocap">demo clip — owner to drop in</div>
+    </div>
+  </div>
+  <div class="foot"><span>Apex Loop</span><span class="n">7 / 8</span></div>
+</section>
+
+<!-- 8 · IMPACT -->
 <section class="slide">
   <p class="kicker">03 · Impact <span class="arc">— value &amp; next</span></p>
-  <h2>Maintain many agents with a loop, not a person each.</h2>
+  <h2>One blueprint, every team runs its own loop.</h2>
   <div class="body-center">
     <div class="scale">
-      <div class="oneloop"><div class="l1">Apex Loop</div><div class="l2">1</div><div class="l1">shared loop</div></div>
+      <div class="oneloop"><div class="l1">Shared</div><div class="l2">1</div><div class="l1">blueprint</div></div>
       <div class="fan">⇒</div>
       <div class="agents">
-        <div class="ag"><b>AI Assistant</b>shopping</div>
-        <div class="ag"><b>Async Matching</b>matching</div>
-        <div class="ag"><b>Buck Bronson</b>coding</div>
-        <div class="ag" style="opacity:.55"><b>+ your agent</b>next</div>
+        <div class="ag"><b>AI Assistant</b>its own loop</div>
+        <div class="ag"><b>Async Matching</b>its own loop</div>
+        <div class="ag"><b>Buck Bronson</b>its own loop</div>
+        <div class="ag" style="opacity:.55"><b>+ your team</b>same principles</div>
         <div class="ag" style="opacity:.4"><b>+ …</b></div>
         <div class="ag" style="opacity:.28"><b>+ …</b></div>
       </div>
     </div>
     <ul class="tight">
-      <li><b>Scales without headcount</b> — humans stay only at the ship decision.</li>
-      <li><b>Reusable trust layer</b> — scorer-validation, human labels, significance, a hard safety floor: infrastructure any agent team can build on.</li>
-      <li><b>Next frontier</b> — the generator (a rewrite that clears the bar unaided) and beyond prompts to tools + code.</li>
+      <li><b>Not one system — one set of principles.</b> Each team builds its own loop from the same blueprint; the signal changes, the loop shape doesn't.</li>
+      <li><b>Scales without headcount</b> — a loop maintains an agent instead of a person; humans stay only at the ship decision.</li>
+      <li><b>End goal: generalize.</b> Near-term, any team can stand up its own loop from these principles; longer-term, a shared trust-layer infrastructure (scorer-validation, significance, safety floors) they build on.</li>
     </ul>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">6 / 6</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">8 / 8</span></div>
 </section>
 
 <script>
