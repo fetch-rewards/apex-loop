@@ -155,7 +155,8 @@
 
   /* present mode: one slide per viewport, scroll-snap; scroll still works */
   body.present{height:100vh; overflow-y:scroll; scroll-snap-type:y mandatory; scroll-behavior:smooth}
-  body.present .slide{margin:0 auto; scroll-snap-align:center; scroll-snap-stop:always}
+  /* each slide is exactly one viewport tall -> only one shows, no neighbor creep */
+  body.present .slide{margin:0 auto; height:100vh; justify-content:center; scroll-snap-align:start; scroll-snap-stop:always}
   .nav{position:fixed; bottom:18px; left:50%; transform:translateX(-50%); z-index:50;
     display:flex; align-items:center; gap:14px; padding:8px 14px; border-radius:999px;
     background:rgba(22,12,40,.72); border:1px solid rgba(211,200,234,.22); backdrop-filter:blur(8px)}
