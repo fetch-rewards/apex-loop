@@ -581,15 +581,14 @@
   <div class="uc-slide">
     <div>
       <span class="uc-tag">Shopping agent · fuzzy signal · own loop</span>
-      <table class="realize">
-        <caption>The six blocks, realized here</caption>
-        <tr><td class="blk">Capture</td><td class="rz">497 real prod conversations, logged</td></tr>
-        <tr><td class="blk">Signal</td><td class="rz">13 LLM judges score each trace → composite</td></tr>
-        <tr><td class="blk">Diagnose</td><td class="rz"><b>validate the 13 judges vs human labels</b>, then rank what's failing</td></tr>
-        <tr><td class="blk">Improve</td><td class="rz">optimizer rewrites the prompt/component, sandboxed</td></tr>
-        <tr><td class="blk">Prove</td><td class="rz">before/after, 95% CI, hard safety floor</td></tr>
-        <tr class="gate"><td class="blk">Promote</td><td class="rz">human reads the templated report → ships or holds</td></tr>
-      </table>
+      <div class="blocks6">
+        <div class="b6"><div class="bn">Capture</div><div class="bd">497 real prod conversations, logged</div></div>
+        <div class="b6"><div class="bn">Signal</div><div class="bd">13 LLM judges score each trace → composite</div></div>
+        <div class="b6"><div class="bn">Diagnose</div><div class="bd"><b>validate the 13 judges vs human labels</b>, then rank what's failing</div></div>
+        <div class="b6"><div class="bn">Improve</div><div class="bd">optimizer rewrites the prompt/component, sandboxed</div></div>
+        <div class="b6"><div class="bn">Prove</div><div class="bd">before/after, 95% CI, hard safety floor</div></div>
+        <div class="b6 gate"><div class="bn">Promote</div><div class="bd">human reads the templated report → ships or holds</div></div>
+      </div>
       <div class="uc-metrics">
         <div class="m"><div class="b">+0.0404</div><div class="l">quality gain, significant</div></div>
         <div class="m p"><div class="b">HELD</div><div class="l">safety floor → not shipped</div></div>
@@ -644,15 +643,14 @@
   <div class="uc-slide">
     <div>
       <span class="uc-tag">Coding agent · objective signal · own loop</span>
-      <table class="realize">
-        <caption>Same six blocks — mixed signal, auto-promote with PR gate</caption>
-        <tr><td class="blk">Capture</td><td class="rz"><b>138 historical Buck PRs</b> across 5 repos, full diffs + metadata</td></tr>
-        <tr><td class="blk">Signal</td><td class="rz"><b>deterministic (CI / merge / tests) + 5 LLM judges</b> on each diff</td></tr>
-        <tr><td class="blk">Diagnose</td><td class="rz"><b>cluster 54 closed PRs</b> into error types, rank failure modes</td></tr>
-        <tr><td class="blk">Improve</td><td class="rz">Claude Sonnet reads diagnosis → <b>surgical patch, not a rewrite</b></td></tr>
-        <tr><td class="blk">Prove</td><td class="rz"><b>targeted re-score on golden set</b> — only the patched judges</td></tr>
-        <tr class="gate"><td class="blk">Promote</td><td class="rz">loop auto-opens a PR on buck-bronson · <b>human review required to merge</b></td></tr>
-      </table>
+      <div class="blocks6">
+        <div class="b6"><div class="bn">Capture</div><div class="bd"><b>138 historical Buck PRs</b> across 5 repos, full diffs + metadata</div></div>
+        <div class="b6"><div class="bn">Signal</div><div class="bd"><b>deterministic (CI / merge / tests) + 5 LLM judges</b> on each diff</div></div>
+        <div class="b6"><div class="bn">Diagnose</div><div class="bd"><b>cluster 54 closed PRs</b> into error types, rank failure modes</div></div>
+        <div class="b6"><div class="bn">Improve</div><div class="bd">Claude Sonnet reads diagnosis → <b>surgical patch, not a rewrite</b></div></div>
+        <div class="b6"><div class="bn">Prove</div><div class="bd"><b>targeted re-score on golden set</b> — only the patched judges</div></div>
+        <div class="b6 gate"><div class="bn">Promote</div><div class="bd">loop auto-opens a PR on buck-bronson · <b>human review required to merge</b></div></div>
+      </div>
       <div class="uc-metrics">
         <div class="m"><div class="b">+1.0</div><div class="l">PR description quality · 25 real PRs · 6 consecutive PASS verdicts</div></div>
       </div>
