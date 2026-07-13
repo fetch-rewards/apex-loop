@@ -153,10 +153,151 @@
   .uc-metrics .m.p .b{color:var(--orange)}
   .uc-metrics .m .l{font-size:12px; color:var(--lav); line-height:1.25; margin-top:3px}
 
-  /* present mode: one slide per viewport, scroll-snap; scroll still works */
-  body.present{height:100vh; overflow-y:scroll; scroll-snap-type:y mandatory; scroll-behavior:smooth}
-  /* each slide is exactly one viewport tall -> only one shows, no neighbor creep */
-  body.present .slide{margin:0 auto; height:100vh; justify-content:center; scroll-snap-align:start; scroll-snap-stop:always}
+  /* Problem / gap-at-Fetch slide */
+  .gap-cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:10px 0 16px}
+  .gap-card{display:flex; flex-direction:column; border:1px solid var(--card-line); border-top:3px solid var(--orange); border-radius:12px; padding:15px 18px; background:var(--pur-card); box-shadow:0 4px 14px rgba(0,0,0,.26)}
+  .gap-card .gs{font-size:12px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--lav-dim)}
+  .gap-card .gsig{align-self:flex-start; font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; padding:3px 9px; border-radius:7px; margin:9px 0 8px; background:rgba(232,245,158,.12); border:1px solid var(--line); color:var(--lime)}
+  .gap-card .gt{font-size:19px; font-weight:800; color:var(--white); margin:0 0 8px}
+  .gap-card .gd{font-size:14.5px; color:var(--lav); line-height:1.36}
+  .gap-card .gd b{color:var(--white); font-weight:700}
+  .gap-tags{display:flex; flex-wrap:wrap; gap:8px; margin:2px 0 4px}
+  .gap-tags .gi{font-size:14px; color:var(--lav); background:rgba(211,200,234,.07); border:1px solid rgba(211,200,234,.16); border-radius:9px; padding:6px 12px}
+  .gap-tags .gi b{color:var(--white); font-weight:700}
+
+  /* Hypothesis / solution-intro slide */
+  .hypo{border:1px solid rgba(232,245,158,.35); border-left:4px solid var(--lime); background:rgba(232,245,158,.07);
+    border-radius:0 14px 14px 0; padding:16px 22px; margin:0}
+  .hypo .hl{font-size:11.5px; font-weight:800; letter-spacing:.11em; text-transform:uppercase; color:var(--lime); margin-bottom:6px}
+  .hypo p{margin:0; font-size:17.5px; line-height:1.4; color:var(--lav)}
+  .hypo p b{color:var(--white); font-weight:700}
+  .hypo .m{color:var(--lime); font-weight:700}
+  .oneliner{font-size:19px; line-height:1.42; color:var(--lav); margin:0}
+  .oneliner b{color:var(--white); font-weight:700}
+  .oneliner .name{color:var(--lime); font-weight:800}
+  /* loop flow as chips */
+  .flow{display:flex; flex-wrap:wrap; align-items:center; gap:8px 6px; margin:0}
+  .flow .fc{font-size:14.5px; font-weight:700; color:var(--white); background:var(--pur-card); border:1px solid var(--card-line); border-radius:9px; padding:8px 13px; white-space:nowrap}
+  .flow .fc.dec{border-color:rgba(250,100,0,.6); background:rgba(250,100,0,.14); color:#ff9a52}
+  .flow .fc.rep{border-style:dashed; color:var(--lav-dim)}
+  .flow .fa{color:var(--lime); font-weight:800; font-size:15px}
+  .principle{font-size:16.5px; line-height:1.38; color:var(--lav); margin:0}
+  .principle b{color:var(--white); font-weight:700}
+  .principle .k{color:var(--orange); font-weight:800}
+
+  /* restructured hypothesis/intro: two-column hero */
+  .intro2{display:grid; grid-template-columns:1.05fr 1fr; gap:30px; align-items:stretch; margin:0}
+  .intro2 .col{display:flex; flex-direction:column; gap:16px}
+  .def{font-size:20px; line-height:1.44; color:var(--lav); margin:0}
+  .def .name{color:var(--lime); font-weight:800}
+  .def b{color:var(--white); font-weight:700}
+  .prin-strip{border-left:4px solid var(--orange); background:rgba(250,100,0,.10); border-radius:0 12px 12px 0; padding:13px 18px; font-size:15.5px; line-height:1.36; color:var(--lav); margin-top:auto}
+  .prin-strip b{color:var(--white); font-weight:700}
+  .prin-strip .k{color:var(--orange); font-weight:800}
+  /* right column: vertical step ladder */
+  .ladder-h{font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--lav-dim); margin:0 0 2px}
+  .ladder{display:flex; flex-direction:column; gap:10px; margin:0}
+  .step{display:flex; align-items:flex-start; gap:14px; border:1px solid var(--card-line); border-radius:12px; padding:13px 16px; background:var(--pur-card); box-shadow:0 4px 14px rgba(0,0,0,.24)}
+  .step .snum{flex:0 0 30px; height:30px; border-radius:9px; background:rgba(232,245,158,.14); border:1px solid var(--line); color:var(--lime); font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center}
+  .step .stx{font-size:15.5px; line-height:1.28; color:var(--lav)}
+  .step .stx b{color:var(--white); font-weight:800; display:block; font-size:16px; margin-bottom:1px}
+  .step.gate{border-color:rgba(250,100,0,.55); background:var(--gate)}
+  .step.gate .snum{background:rgba(250,100,0,.18); border-color:rgba(250,100,0,.5); color:#ff9a52}
+  .step.gate .stx b{color:#ff9a52}
+  /* measured-by dataset tiles */
+  .measured-h{font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--lav-dim); margin:0 0 12px}
+  .dsets{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:0}
+  .dset{border:1px solid var(--card-line); border-top:3px solid var(--lime); border-radius:12px; padding:15px 18px; background:var(--pur-card); box-shadow:0 4px 14px rgba(0,0,0,.24)}
+  .dset.reg{border-top-color:var(--orange)}
+  .dset .dn{font-size:15px; font-weight:800; color:var(--white)}
+  .dset .dr{font-size:12px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--lime); margin:3px 0 7px}
+  .dset.reg .dr{color:#ff9a52}
+  .dset .dd{font-size:14px; color:var(--lav); line-height:1.34}
+  .dset .dd b{color:var(--white); font-weight:700}
+
+  /* 4-stage workflow: Annotate -> Diagnose -> Optimize -> Prove&Promote */
+  .wf{display:flex; align-items:stretch; gap:0; margin:0}
+  .wf .stage{flex:1; border:1px solid var(--card-line); border-top:3px solid var(--lime); border-radius:13px; padding:15px 16px 16px; background:var(--pur-card); box-shadow:0 5px 16px rgba(0,0,0,.26); display:flex; flex-direction:column}
+  .wf .stage.gate{border-top-color:var(--orange); background:var(--gate)}
+  .wf .snum{font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--lav-dim)}
+  .wf .sname{font-size:19px; font-weight:800; color:var(--lime); margin:2px 0 3px}
+  .wf .stage.gate .sname{color:#ff9a52}
+  .wf .spur{font-size:12.5px; color:var(--lav-dim); line-height:1.3; margin-bottom:10px; min-height:32px}
+  .wf ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:7px}
+  .wf ul li{position:relative; padding-left:16px; font-size:13px; line-height:1.32; color:var(--lav)}
+  .wf ul li::before{content:""; position:absolute; left:0; top:7px; width:7px; height:7px; border-radius:2px; background:var(--lime)}
+  .wf .stage.gate ul li::before{background:var(--orange)}
+  .wf ul li b{color:var(--white); font-weight:700}
+  .wf .wa{display:flex; align-items:center; padding:0 7px; color:var(--lime); font-size:20px; font-weight:800}
+  .wf .set{display:inline-block; font-size:10.5px; font-weight:800; padding:1px 6px; border-radius:5px; background:rgba(232,245,158,.13); border:1px solid var(--line); color:var(--lime)}
+  .wf .set.reg{background:rgba(250,100,0,.14); border-color:rgba(250,100,0,.4); color:#ff9a52}
+  .wf-note{font-size:15px; line-height:1.38; color:var(--lav); border-left:4px solid var(--lime); background:rgba(232,245,158,.07); border-radius:0 12px 12px 0; padding:12px 18px; margin:0}
+  .wf-note b{color:var(--white); font-weight:700}
+  .wf-note .k{color:var(--lime); font-weight:800}
+
+  /* Proof: two side-by-side result panels (HELD vs PROMOTE) */
+  .proof2{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin:0}
+  .ppanel{border:1px solid var(--card-line); border-radius:14px; padding:18px 20px; background:var(--pur-card); box-shadow:0 5px 18px rgba(0,0,0,.28); display:flex; flex-direction:column}
+  .ppanel.held{border-top:3px solid var(--orange)}
+  .ppanel.promote{border-top:3px solid #a6e06a}
+  .pp-head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:4px}
+  .pp-agent{font-size:19px; font-weight:800; color:var(--white)}
+  .pp-sig{font-size:11.5px; font-weight:700; color:var(--lav-dim); margin:1px 0 12px}
+  .verdict{font-size:13px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:5px 13px; border-radius:999px; white-space:nowrap}
+  .verdict.held{background:rgba(250,100,0,.16); border:1px solid rgba(250,100,0,.55); color:#ff9a52}
+  .verdict.promote{background:rgba(166,224,106,.16); border:1px solid rgba(166,224,106,.55); color:#c3ef94}
+  .pp-stats{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px}
+  .pp-stat{border:1px solid var(--card-line); border-radius:10px; padding:10px 12px; background:rgba(0,0,0,.14)}
+  .pp-stat .v{font-size:23px; font-weight:800; color:var(--lime); font-variant-numeric:tabular-nums; line-height:1}
+  .pp-stat.warn .v{color:#ff9a52}
+  .pp-stat .l{font-size:11.5px; color:var(--lav); line-height:1.25; margin-top:5px}
+  .pp-foot{font-size:12.5px; color:var(--lav-dim); line-height:1.34; margin-top:auto; border-top:1px solid rgba(211,200,234,.12); padding-top:9px}
+  .pp-foot b{color:var(--lav); font-weight:700}
+  .pp-gates{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+  .pp-gates .g{font-size:11px; font-weight:800; color:#c3ef94; background:rgba(166,224,106,.12); border:1px solid rgba(166,224,106,.4); border-radius:7px; padding:3px 9px}
+
+  /* use-case: six-block ladder (replaces the plain realize table) */
+  .blocks6{display:flex; flex-direction:column; gap:8px; margin:0 0 16px}
+  .b6{display:flex; align-items:flex-start; gap:12px; border:1px solid var(--card-line); border-left:3px solid var(--lime); border-radius:10px; padding:9px 13px; background:var(--pur-card)}
+  .b6 .bn{flex:0 0 84px; font-size:12.5px; font-weight:800; letter-spacing:.03em; text-transform:uppercase; color:var(--lime); padding-top:1px}
+  .b6 .bd{font-size:14px; line-height:1.32; color:var(--lav)}
+  .b6 .bd b{color:var(--white); font-weight:700}
+  .b6.gate{border-left-color:var(--orange); background:var(--gate)}
+  .b6.gate .bn{color:#ff9a52}
+
+  /* Problem statement: the five things every team re-solves by hand */
+  .solve-lead{font-size:12px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--lav-dim); margin:6px 0 12px}
+  .solve{margin:0 0 16px; padding:0; list-style:none; counter-reset:s; display:grid; grid-template-columns:1fr 1fr; gap:11px 26px}
+  .solve li{position:relative; padding-left:40px; font-size:16.5px; line-height:1.34; color:var(--lav); counter-increment:s}
+  .solve li::before{content:counter(s); position:absolute; left:0; top:1px; width:27px; height:27px; border-radius:8px; background:rgba(232,245,158,.13); border:1px solid var(--line); color:var(--lime); font-weight:800; font-size:14px; display:flex; align-items:center; justify-content:center}
+  .solve li b{color:var(--white); font-weight:700}
+  .solve li .a{color:var(--lime); font-weight:700}
+
+  /* Problem: broken-pipeline visual (pieces exist, the link is missing) */
+  .pipe{display:flex; align-items:stretch; gap:0; margin:8px 0 20px}
+  .pipe .stp{flex:1; border:1px solid var(--card-line); border-top:3px solid var(--lime); border-radius:12px; padding:20px 14px; background:var(--pur-card); box-shadow:0 4px 14px rgba(0,0,0,.26); text-align:center}
+  .pipe .stp .si{font-size:26px; line-height:1; margin-bottom:10px}
+  .pipe .stp .sn{font-size:16px; font-weight:800; color:var(--white)}
+  .pipe .stp .sd{font-size:12.5px; color:var(--lav-dim); margin-top:3px; line-height:1.25}
+  .pipe .stp.have .st{display:inline-block; margin-top:8px; font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#c3ef94; background:rgba(166,224,106,.14); border:1px solid rgba(166,224,106,.4); border-radius:7px; padding:3px 9px}
+  .pipe .arr{display:flex; align-items:center; padding:0 6px; color:var(--lime); font-size:22px; font-weight:800}
+  /* the missing link */
+  .pipe .gap{flex:1.15; border:2px dashed var(--orange); border-radius:12px; padding:14px; background:rgba(250,100,0,.09); text-align:center; display:flex; flex-direction:column; justify-content:center}
+  .pipe .gap .gx{font-size:22px; line-height:1; color:var(--orange); font-weight:800}
+  .pipe .gap .gn{font-size:15.5px; font-weight:800; color:var(--orange); margin-top:6px}
+  .pipe .gap .gsd{font-size:12.5px; color:var(--lav); margin-top:3px; line-height:1.25}
+  .pipe .arr.brk{color:var(--orange)}
+  .pipe .stp.goal{border-top-color:var(--lav-dim); opacity:.6}
+  .pipe .stp.goal .sn{color:var(--lav)}
+
+  /* present mode: one slide at a time, scaled to fit the viewport while locking 16:9 */
+  body.present{position:fixed; inset:0; height:100vh; width:100vw; overflow:hidden; background:#0d0720;
+    display:flex; align-items:center; justify-content:center}
+  /* keep the 1280x720 (16:9) canvas; scale uniformly -> letterboxed, never distorted */
+  body.present .slide{position:absolute; left:50%; top:50%; margin:0;
+    transform:translate(-50%,-50%) scale(var(--scale,1)); transform-origin:center center;
+    opacity:0; visibility:hidden; transition:opacity .3s ease}
+  body.present .slide.active{opacity:1; visibility:visible}
   .nav{position:fixed; bottom:18px; left:50%; transform:translateX(-50%); z-index:50;
     display:flex; align-items:center; gap:14px; padding:8px 14px; border-radius:999px;
     background:rgba(22,12,40,.72); border:1px solid rgba(211,200,234,.22); backdrop-filter:blur(8px)}
@@ -189,10 +330,63 @@
     Akash Bhapkar · Prakash Chaudhary · Sangam Man Buddhacharya<br>
     Track: <span>Agentic Product Development</span> &nbsp;·&nbsp; Theme: <span>Scale the business</span>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">1 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">1 / 12</span></div>
 </section>
 
-<!-- 2 · THE PROBLEM = THE MANUAL LOOP -->
+<!-- 2 · THE PROBLEM = THE STATEMENT -->
+<section class="slide">
+  <p class="kicker">01 · Innovation <span class="arc">— the problem</span></p>
+  <h2>Agents drift as the data shifts -- and keeping them healthy takes an engineer babysitting each project.</h2>
+  <div class="body-center" style="flex:1; display:flex; flex-direction:column; justify-content:space-evenly; margin:0">
+    <p class="sub" style="font-size:21px; margin:0">At Fetch, input data shifts drastically, so agents must keep adapting to hold performance. Teams already have the pieces to <b style="color:var(--white)">detect</b> failures automatically -- and AI tools speed up finding the bug -- but everything after is <span class="paccent">still a human babysitting the agent.</span></p>
+
+    <div class="pipe" style="margin:0">
+      <div class="stp have"><div class="si">📡</div><div class="sn">Capture</div><div class="sd">real traces + labels</div><span class="st">automated</span></div>
+      <div class="arr">→</div>
+      <div class="stp have"><div class="si">📊</div><div class="sn">Score</div><div class="sd">judges + metrics</div><span class="st">automated</span></div>
+      <div class="arr">→</div>
+      <div class="stp have"><div class="si">🚩</div><div class="sn">Flag</div><div class="sd">individual failures</div><span class="st">automated</span></div>
+      <div class="arr brk">⇢</div>
+      <div class="gap"><div class="gx">🧑‍💻</div><div class="gn">Then a human, by hand</div><div class="gsd">diagnose · guess a fix · verify · babysit -- every time, on every team</div></div>
+    </div>
+
+    <div class="callout p" style="font-size:19px; margin:0"><b>No standard, trustworthy pipeline</b> connects those pieces into continuous improvement -- so no agent stays in <b style="color:var(--white)">maintenance mode</b> without a human, and <b style="color:var(--orange)">every team re-solves it by hand.</b></div>
+  </div>
+  <div class="foot"><span>Apex Loop</span><span class="n">2 / 12</span></div>
+</section>
+
+<!-- 3 · HOW DO YOU KNOW IT'S REAL -->
+<section class="slide">
+  <p class="kicker">01 · Innovation <span class="arc">— how do you know it's real?</span></p>
+  <h2>The same manual gap -- on every agent team we looked at.</h2>
+  <div class="body-center" style="flex:1; display:flex; flex-direction:column; justify-content:space-evenly; margin:0">
+    <p class="sub" style="font-size:20px; margin:0">Three real Fetch teams -- <b style="color:var(--white)">three different signals</b> -- all hit the same wall: detection is there, the path to a proven fix is not.</p>
+    <div class="gap-cards" style="margin:0">
+      <div class="gap-card">
+        <div class="gs">AI Assistant · Innovation Labs</div>
+        <div class="gsig">Fuzzy signal</div>
+        <div class="gt">Guess &amp; hope</div>
+        <div class="gd"><b>13 LLM judges</b> over hundreds of hand-labeled traces flag bad ones -- but improving still means a person reads transcripts, <b>guesses a prompt change, and hopes</b> nothing else breaks.</div>
+      </div>
+      <div class="gap-card">
+        <div class="gs">Async Matching · SMaC</div>
+        <div class="gsig">Crisp signal</div>
+        <div class="gt">Can't hand off</div>
+        <div class="gd">Annotators audit outputs; when performance drops, engineers <b>manually diagnose, fix, and validate.</b> No loop to heal it -- so they <b>stay tied to the project.</b></div>
+      </div>
+      <div class="gap-card">
+        <div class="gs">Buck Bronson · dev agent</div>
+        <div class="gsig">Objective signal</div>
+        <div class="gt">Learning is lost</div>
+        <div class="gd">Builds fixes autonomously, but not every PR merges. The <b>unmerged PRs are the signal</b> it should learn from -- yet nothing feeds it back.</div>
+      </div>
+    </div>
+    <div class="callout p" style="font-size:19px; margin:0"><b>Different teams, different signals -- the same gap.</b> The pieces to detect failures exist everywhere; <b style="color:var(--orange)">the trustworthy path from failure to proven fix does not -- so the work stays manual and gets redone on every team.</b></div>
+  </div>
+  <div class="foot"><span>Apex Loop</span><span class="n">3 / 12</span></div>
+</section>
+
+<!-- 4 · THE PROBLEM = THE MANUAL LOOP -->
 <section class="slide">
   <p class="kicker">01 · Innovation <span class="arc">— the problem</span></p>
   <h2>The loop is six blocks -- and today a human runs almost every step, on every agent.</h2>
@@ -226,10 +420,34 @@
     </svg>
   </div>
   <div class="callout p" style="margin-top:2px; font-size:18px"><b>That's the cost:</b> one human running these steps, per agent, forever -- the bill grows linearly with every agent you add. <b style="color:var(--orange)">The manual loop is the problem.</b></div>
-  <div class="foot"><span>Apex Loop</span><span class="n">2 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">4 / 12</span></div>
 </section>
 
-<!-- 3 · THE LOOP — VISION (AUTOMATED) -->
+<!-- 5 · HYPOTHESIS + INTRODUCING APEX LOOP -->
+<section class="slide">
+  <p class="kicker">01 · Innovation <span class="arc">— our bet &amp; the idea</span></p>
+  <h2>Meet Apex Loop -- agent quality maintained by a loop, not an engineer per agent.</h2>
+  <div class="body-center" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:30px; margin:0">
+    <div class="hypo">
+      <div class="hl">Our hypothesis</div>
+      <p style="font-size:20px">A standardized, human-governed self-improvement loop turns agent failures into <b>regression-tested candidate fixes</b> -- keeping projects in maintenance mode with minimal human effort, faster than per-agent manual tuning.</p>
+    </div>
+
+    <div>
+      <div class="measured-h">How we measure it -- three datasets</div>
+      <div class="dsets">
+        <div class="dset"><div class="dn">Learning set</div><div class="dr">Fix rate ↑</div><div class="dd">known failures the loop should <b>resolve</b></div></div>
+        <div class="dset"><div class="dn">Held-out set</div><div class="dr">Fix rate ↑</div><div class="dd">unseen failures -- proof it <b>generalizes</b></div></div>
+        <div class="dset reg"><div class="dn">Golden set</div><div class="dr">Regression ↓</div><div class="dd">frozen safety net -- <b>nothing breaks</b></div></div>
+      </div>
+    </div>
+
+    <div class="prin-strip" style="font-size:18px"><b>Guiding principle:</b> <span class="k">humans decide; machines do everything up to the decision.</span> Automation of the toil, not blind autonomy.</div>
+  </div>
+  <div class="foot"><span>Apex Loop</span><span class="n">5 / 12</span></div>
+</section>
+
+<!-- 6 · THE LOOP — VISION (AUTOMATED) -->
 <section class="slide">
   <p class="kicker">01 · Innovation <span class="arc">— the loop, automated</span></p>
   <h2>The vision: the loop runs itself. The human only decides what ships.</h2>
@@ -255,7 +473,7 @@
       <text x="500" y="244" text-anchor="middle" font-size="12.5" fill="#d3c8ea">+ scorer-val sets</text>
       <text x="500" y="360" text-anchor="middle" class="vision-tag">Vision: the loop runs itself.</text>
       <foreignObject x="410" y="0"   width="180" height="70"><div class="rn"><div class="rnn">1 · CAPTURE</div><div class="rnd">serve + log every inference</div></div></foreignObject>
-      <foreignObject x="696" y="100" width="180" height="70"><div class="rn"><div class="rnn">2 · SIGNAL</div><div class="rnd">judges score every output</div></div></foreignObject>
+      <foreignObject x="696" y="100" width="180" height="70"><div class="rn"><div class="rnn">2 · SIGNAL</div><div class="rnd">judges/human score every output</div></div></foreignObject>
       <foreignObject x="696" y="300" width="180" height="70"><div class="rn"><div class="rnn">3 · DIAGNOSE</div><div class="rnd">validate the judges, then report what's failing</div></div></foreignObject>
       <foreignObject x="410" y="400" width="180" height="70"><div class="rn"><div class="rnn">4 · IMPROVE</div><div class="rnd">optimizer rewrites, sandboxed</div></div></foreignObject>
       <foreignObject x="124" y="300" width="180" height="70"><div class="rn"><div class="rnn">5 · PROVE</div><div class="rnd">before/after, CI, safety floor</div></div></foreignObject>
@@ -263,24 +481,97 @@
     </svg>
   </div>
   <div class="callout" style="margin-top:2px; font-size:18px"><b>The catch:</b> automating the steps is the easy part -- the real work moves to the optimizer, and it doesn't generalize for free; a good optimizer takes real understanding of the specific problem. The ship decision stays human, on purpose.</div>
-  <div class="foot"><span>Apex Loop</span><span class="n">3 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">6 / 12</span></div>
 </section>
 
-<!-- 4 · PROOF -->
+<!-- 7 · HOW THE LOOP WORKS — 4-STAGE WORKFLOW -->
+<section class="slide">
+  <p class="kicker">01 · Innovation <span class="arc">— how the loop works</span></p>
+  <h2>From a flagged error to a proven fix -- four stages, one human gate.</h2>
+  <div class="body-center" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:24px; margin:0">
+    <div class="wf">
+      <div class="stage">
+        <div class="snum">Stage 2</div>
+        <div class="sname">Annotate</div>
+        <div class="spur">Audit outputs; categorize &amp; prioritize errors.</div>
+        <ul>
+          <li>Humans review outputs, give <b>reasoning</b></li>
+          <li>Map each error to a <b>discrete, actionable category</b></li>
+          <li>Create Golden, Held-out, and Learning sets</li>
+        </ul>
+      </div>
+      <div class="wa">→</div>
+      <div class="stage">
+        <div class="snum">Stage 3 · Diagnose AI Agent</div>
+        <div class="sname">Diagnose</div>
+        <div class="spur">Find root causes; bucket &amp; prioritize. <span class="set">Learning set</span></div>
+        <ul>
+          <li>Analyze agent metadata, human audited data, and decision logs for each sample.</li>
+          <li><b>Cluster</b> recurring patterns into <b>problem buckets</b></li>
+          <li>Prioritize by <b>sample count + GMV</b> impact</li>
+        </ul>
+      </div>
+      <div class="wa">→</div>
+      <div class="stage">
+        <div class="snum">Stage 4 · Optimizer AI Agent</div>
+        <div class="sname">Optimize</div>
+        <div class="spur">Fix each bucket, one by one. <span class="set">Golden</span> <span class="set">Learning</span></div>
+        <ul>
+          <li><b>Fixes: Global</b> prompt | <b>skill</b> | <b>infra</b> (→ human)</li>
+          <li>Accept only if <b>fix&nbsp;&gt;&nbsp;X%</b>, <b>regression&nbsp;&lt;&nbsp;Y%</b></li>
+          <li>Passing fixes advance to Prove</li>
+        </ul>
+      </div>
+      <div class="wa">→</div>
+      <div class="stage gate">
+        <div class="snum">Stage 5 & 6 · Human gate</div>
+        <div class="sname">Prove &amp; Promote</div>
+        <div class="spur">Combine accepted fixes; final verdict. <span class="set reg">Golden</span> <span class="set reg">Held-out</span></div>
+        <ul>
+          <li><b>Golden</b> → "we didn't break anything"</li>
+          <li><b>Held-out</b> → "the fix generalizes"</li>
+          <li>Typed decision <b>halts for a human</b> to ship</li>
+        </ul>
+      </div>
+    </div>
+    <div class="wf-note"><b>What actually changes:</b> Apex Loop rewrites <span class="k">one harness lever -- the agent's prompt</span> (global edit or a scenario-triggered skill), verified against real evals. Tool/code fixes are <b>routed to a human</b>, never auto-applied -- no weight retraining.</div>
+  </div>
+  <div class="foot"><span>Apex Loop</span><span class="n">7 / 12</span></div>
+</section>
+
+<!-- 8 · PROOF -->
 <section class="slide">
   <p class="kicker">02 · Execution <span class="arc">— the proof</span></p>
-  <h2>The loop, proven end-to-end on one agent -- and it refused to ship an unsafe win.</h2>
-  <div class="body-center">
-    <p class="sub" style="font-size:19px; margin-bottom:14px">One worked example: the loop run on the AI-Assistant agent (already hand-tuned; fuzzy LLM-judge signal). One of the three; the same loop runs on all.</p>
-    <div class="metrics">
-      <div class="metric"><div class="big">497</div><div class="lbl">real prod traces, all human-labeled</div></div>
-      <div class="metric"><div class="big">13/13</div><div class="lbl">judges validated before acting</div></div>
-      <div class="metric"><div class="big">+0.0404</div><div class="lbl">quality gain · 95% CI [+0.009,+0.062] · significant</div></div>
-      <div class="metric p"><div class="big">HELD</div><div class="lbl">safety 0.8431 &lt; 0.85 floor → not shipped</div></div>
+  <h2>Proven end-to-end on two agents -- the gate refused one, promoted the other.</h2>
+  <div class="body-center" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:18px; margin:0">
+    <div class="proof2">
+      <div class="ppanel held">
+        <div class="pp-head"><span class="pp-agent">AI Assistant</span><span class="verdict held">Held at gate</span></div>
+        <div class="pp-sig">Fuzzy LLM-judge signal · already hand-tuned · 497 human-labeled traces</div>
+        <div class="pp-stats">
+          <div class="pp-stat"><div class="v">13/13</div><div class="l">judges validated before acting</div></div>
+          <div class="pp-stat"><div class="v">+0.0404</div><div class="l">quality gain · significant (95% CI [+.009,+.062])</div></div>
+          <div class="pp-stat warn"><div class="v">0.8431</div><div class="l">safety composite -- under the 0.85 floor</div></div>
+          <div class="pp-stat warn"><div class="v">HELD</div><div class="l">safety floor tripped → nothing shipped</div></div>
+        </div>
+        <div class="pp-foot"><b>A quality gain never buys back a safety drop.</b> The loop refused to ship -- exactly what makes it safe near production.</div>
+      </div>
+      <div class="ppanel promote">
+        <div class="pp-head"><span class="pp-agent">Async Matching</span><span class="verdict promote">Promote ✓</span></div>
+        <div class="pp-sig">AIOps Audit · 200 learning / 1552 golden / 49 held-out · (Metric Accuracy)</div>
+        <div class="pp-stats">
+          <div class="pp-stat"><div class="v">77 → 80%</div><div class="l">golden accuracy · <b>+3.0%</b></div></div>
+          <div class="pp-stat"><div class="v">44.9%</div><div class="l">held-out fix rate</div></div>
+          <div class="pp-stat"><div class="v">-3.0%</div><div class="l">regression (improved)</div></div>
+          <div class="pp-stat"><div class="v">PROMOTE</div><div class="l">all gates passed → ready to ship</div></div>
+        </div>
+        <div class="pp-gates"><span class="g">✓ Regression ≤ 2%</span><span class="g">✓ Fix rate ≥ 40%</span></div>
+        <div class="pp-foot">🕘 55m 28s · <b>200 errors → 10 buckets → Global 3: accepted, 5: rejected, Infra: 3</b></div>
+      </div>
     </div>
-    <div class="callout p"><b>The differentiator:</b> a quality gain never buys back a safety drop. That refusal is what makes it safe to trust near production.</div>
+    <div class="callout p" style="font-size:18px"><b>The gate cuts both ways:</b> it <span style="color:#ff9a52;font-weight:700">held</span> an unsafe win on one agent and <span style="color:#c3ef94;font-weight:700">promoted</span> a proven one on another -- same loop, different signals. <b style="color:var(--orange)">That's what makes it trustworthy.</b></div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">4 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">8 / 12</span></div>
 </section>
 
 <!-- 5 · USE CASE: AI ASSISTANT -->
@@ -314,7 +605,7 @@
       <div class="videocap">20-sec demo — the loop running on the AI Assistant</div>
     </div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">5 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">9 / 12</span></div>
 </section>
 
 <!-- 6 · USE CASE: ASYNC MATCHING -->
@@ -324,23 +615,26 @@
   <div class="uc-slide">
     <div>
       <span class="uc-tag">Matching agent · crisp signal · own loop</span>
-      <table class="realize">
-        <caption>Same six blocks — trust machinery relaxed</caption>
-        <tr><td class="blk">Capture</td><td class="rz">match decisions logged in production</td></tr>
-        <tr><td class="blk">Signal</td><td class="rz"><b>crisp accept / reject</b> — ground truth, no judges to validate</td></tr>
-        <tr><td class="blk">Diagnose</td><td class="rz">rank which match types are failing</td></tr>
-        <tr><td class="blk">Improve</td><td class="rz">optimizer adjusts the matching component</td></tr>
-        <tr><td class="blk">Prove</td><td class="rz">accept-rate before/after (lighter — signal is exact)</td></tr>
-        <tr class="gate"><td class="blk">Promote</td><td class="rz">human ships — faster gate, crisp evidence</td></tr>
-      </table>
-      <div class="uc-todo">Sangam — confirm the block details + drop in your metric.</div>
+      <div class="blocks6">
+        <div class="b6"><div class="bn">Capture</div><div class="bd"><b>~25K missed-SPD predictions</b> logged weekly in prod</div></div>
+        <div class="b6"><div class="bn">Signal</div><div class="bd"><b>AIOps audit report</b> with correct labels -- crisp ground truth</div></div>
+        <div class="b6"><div class="bn">Diagnose</div><div class="bd">Analyze metadata + audits → <b>cluster common failure patterns</b> into buckets</div></div>
+        <div class="b6"><div class="bn">Improve</div><div class="bd">Find appropriate optimization type for each bucket: <b>global</b> prompt (general), <b>skill</b> (specific), or <b>infra</b>. Apply the optimization and evaluate on learning and golden set. Approve the passed proposal..</div></div>
+        <div class="b6"><div class="bn">Prove</div><div class="bd">Accuracy on golden + held-out · <b>regression &lt; 2%</b>, <b>fix rate ≥ 40%</b></div></div>
+        <div class="b6 gate"><div class="bn">Promote</div><div class="bd"><b>Human ships</b> -- faster gate, crisp evidence</div></div>
+      </div>
+      <div class="uc-metrics">
+        <div class="m"><div class="b">0% </div><div class="l"><b>Regression rate</b><br>(better than baseline)</div></div>
+         <div class="m"><div class="b">+44.9%</div><div class="l"><b>Held-out fix rate</b><br>(quality gain, significant)</div></div>
+        <div class="m"><div class="b">PROMOTE</div><div class="l">safety floor → shipped</div></div>
+      </div>
     </div>
     <div>
       <div class="videobox"><div class="ph"><div class="pi">▶</div>demo — Sangam to add</div></div>
       <div class="videocap">demo clip — owner to drop in</div>
     </div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">6 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">10 / 12</span></div>
 </section>
 
 <!-- 7 · USE CASE: BUCK BRONSON -->
@@ -373,7 +667,7 @@
       <div class="videocap">20-sec demo — the loop running on Buck Bronson</div>
     </div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">7 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">11 / 12</span></div>
 </section>
 
 <!-- 8 · IMPACT -->
@@ -408,12 +702,12 @@
       </div>
     </div>
   </div>
-  <div class="foot"><span>Apex Loop</span><span class="n">8 / 8</span></div>
+  <div class="foot"><span>Apex Loop</span><span class="n">12 / 12</span></div>
 </section>
 
 <nav class="nav" aria-label="Slide navigation">
   <button id="prev" aria-label="Previous slide">‹</button>
-  <span class="count" id="count">1 / 8</span>
+  <span class="count" id="count">1 / 12</span>
   <button id="next" aria-label="Next slide">›</button>
 </nav>
 
@@ -425,29 +719,29 @@
     fetch(v.querySelector('source').src,{method:'HEAD'}).then(r=>{ if(!r.ok)fail(); }).catch(fail);
   });
 
-  // present mode: one slide per viewport, keys / click / buttons
+  // present mode: one 16:9 slide at a time, scaled to fit the viewport; keys / click / buttons
   (function(){
     document.body.classList.add('present');
     const slides=[...document.querySelectorAll('.slide')];
     const total=slides.length;
     const countEl=document.getElementById('count');
     const prevBtn=document.getElementById('prev'), nextBtn=document.getElementById('next');
+    const W=1280, H=720; // fixed 16:9 design canvas
     let cur=0;
+    // scale the canvas uniformly to fit the viewport, preserving 16:9 (letterbox)
+    function fit(){
+      const s=Math.min(window.innerWidth/W, window.innerHeight/H);
+      document.body.style.setProperty('--scale', s);
+    }
     function go(i){
       cur=Math.max(0, Math.min(total-1, i));
-      slides[cur].scrollIntoView({behavior:'smooth', block:'center'});
+      slides.forEach((s,idx)=>s.classList.toggle('active', idx===cur));
       countEl.textContent=(cur+1)+' / '+total;
       prevBtn.disabled=cur===0; nextBtn.disabled=cur===total-1;
     }
-    // keep counter in sync when the user scrolls manually
-    const io=new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ cur=slides.indexOf(e.target);
-        countEl.textContent=(cur+1)+' / '+total; prevBtn.disabled=cur===0; nextBtn.disabled=cur===total-1; } });
-    },{threshold:0.6});
-    slides.forEach(s=>io.observe(s));
     prevBtn.onclick=()=>go(cur-1);
     nextBtn.onclick=()=>go(cur+1);
-    // click anywhere advances; shift-click or click on a link/control does not
+    // click anywhere advances; clicks on links/controls do not
     document.addEventListener('click',(e)=>{
       if(e.target.closest('.nav,a,button,video,input,textarea,select')) return;
       if(e.detail===0) return; // keyboard-triggered
@@ -459,7 +753,8 @@
       else if(e.key==='Home'){ e.preventDefault(); go(0); }
       else if(e.key==='End'){ e.preventDefault(); go(total-1); }
     });
-    go(0);
+    window.addEventListener('resize', fit);
+    fit(); go(0);
   })();
 </script>
 </body>
