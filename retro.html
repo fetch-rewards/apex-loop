@@ -48,11 +48,13 @@
   <p class="lead">Build one reusable self-improvement loop (Capture, Signal, Diagnose, Improve, Prove, Promote) and prove it generalizes by running it on three different agents: AI Assistant, Async Matching, Buck Bronson. A human stays only at the promote decision.</p>
 
   <h2><span class="dot">·</span> What we shipped</h2>
+  <p class="lead" style="font-size:16.5px">The loop, proven on three agents. One per signal type, same loop shape:</p>
   <ul>
-    <li>The loop, proven end-to-end on the AI Assistant: 497 hand-labeled traces, validated judges, a prompt rewrite, and a significant <span class="metric">+0.0404</span> quality gain. The loop <span class="held">held</span> it at the safety floor rather than shipping it: a quality gain does not buy back a safety drop.</li>
-    <li>The same loop applied across three signal types: fuzzy (LLM judges), crisp (accept/reject), objective (tests/CI).</li>
-    <li>Showcase: deck, interactive loop, full report, and three use-case reports, all live and version-controlled.</li>
-    <li>All Demo Day deliverables submitted: video, one-slide master deck, breakout-room deck, framing brief.</li>
+    <li><b>AI Assistant</b> (fuzzy signal, LLM judges): 497 hand-labeled traces, validated judges, a prompt rewrite, and a significant <span class="metric">+0.0404</span> quality gain. The loop <span class="held">held</span> it at the safety floor rather than shipping it: a quality gain does not buy back a safety drop.</li>
+    <li><b>Async Matching</b> (crisp signal, accept/reject): the loop bucketed 11 recurring failure types, generated targeted prompt fixes, and accepted 4 after proving them: <span class="metric">71-88% fix rate</span> per bucket, under 4% regression, all past the guardrail, zero rejected.</li>
+    <li><b>Buck Bronson</b> (objective signal, PR outcomes): the dev agent had opened 204 PRs with 39% closed unmerged and no tracked reasons. The loop diagnosed the patterns and proved a fix across <span class="metric">4 consecutive PASS runs</span>: PR-description quality +1.09 on 35 golden PRs (25 improved, 2 regressed, 8 flat).</li>
+    <li>Same loop shape across all three: the signal changes, the loop does not.</li>
+    <li>Showcase (deck, interactive loop, full report, three use-case reports) and all Demo Day deliverables (video, one-slide deck, breakout-room deck, framing brief), live and version-controlled.</li>
   </ul>
 
   <h2><span class="dot">·</span> What went well</h2>
