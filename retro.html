@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apex Loop — Innovation Week Retro</title>
+<style>
+  :root{
+    --pur-deep:#2f1364; --pur:#4a2287; --pur-bright:#6a35b0;
+    --lime:#e8f59e; --orange:#fa6400; --white:#fff; --lav:#d3c8ea; --lav-dim:#9d8bc4;
+    --card:#3a1c73; --line:rgba(205,191,230,.2); --card-line:rgba(205,191,230,.16);
+    --sans:-apple-system,"Segoe UI",Inter,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; min-height:100vh; font-family:var(--sans); color:var(--white); line-height:1.5;
+    background:radial-gradient(120% 130% at 85% 8%, var(--pur-bright), var(--pur) 45%, var(--pur-deep) 100%);
+    padding:56px 24px 96px}
+  .wrap{max-width:820px; margin:0 auto}
+  .kick{font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--lime); margin:0 0 10px}
+  h1{font-size:52px; line-height:1.02; margin:0 0 14px; color:var(--lime); letter-spacing:-.02em}
+  .meta{font-size:15.5px; color:var(--lav); line-height:1.5; margin:0 0 6px}
+  .meta b{color:var(--white); font-weight:700}
+  .rule{height:1px; background:var(--line); border:0; margin:34px 0}
+  h2{font-size:24px; color:var(--white); margin:36px 0 12px; letter-spacing:-.01em}
+  h2 .dot{color:var(--lime)}
+  p.lead{font-size:18px; color:var(--lav); line-height:1.55; margin:0 0 8px}
+  ul{margin:0; padding-left:0; list-style:none}
+  li{position:relative; padding-left:26px; margin:0 0 12px; font-size:16.5px; color:var(--lav); line-height:1.5}
+  li::before{content:""; position:absolute; left:2px; top:9px; width:9px; height:9px; border-radius:3px; background:var(--lime)}
+  li b{color:var(--white); font-weight:700}
+  .metric{color:var(--lime); font-weight:700; font-variant-numeric:tabular-nums}
+  .held{color:var(--orange); font-weight:700}
+  .foot{margin-top:48px; padding-top:20px; border-top:1px solid var(--line); font-size:14px; color:var(--lav-dim); line-height:1.6}
+  .foot a{color:var(--lime); text-decoration:none}
+  .foot a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kick">Team 175 · Innovation Week 2026</p>
+  <h1>Apex Loop: Retro</h1>
+  <p class="meta"><b>Prakash Chaudhary</b> · <b>Sangam Man Buddhacharya</b> · <b>Akash Bhapkar</b></p>
+  <p class="meta">Hacking Jul 8-10 · Demo Day Jul 13</p>
+
+  <hr class="rule">
+
+  <h2><span class="dot">·</span> What we set out to do</h2>
+  <p class="lead">Build one reusable self-improvement loop (Capture, Signal, Diagnose, Improve, Prove, Promote) and prove it generalizes by running it on three different agents: AI Assistant, Async Matching, Buck Bronson. A human stays only at the promote decision.</p>
+
+  <h2><span class="dot">·</span> What we shipped</h2>
+  <ul>
+    <li>The loop, proven end-to-end on the AI Assistant: 497 hand-labeled traces, validated judges, a prompt rewrite, and a significant <span class="metric">+0.0404</span> quality gain. The loop <span class="held">held</span> it at the safety floor rather than shipping it: a quality gain does not buy back a safety drop.</li>
+    <li>The same loop applied across three signal types: fuzzy (LLM judges), crisp (accept/reject), objective (tests/CI).</li>
+    <li>Showcase: deck, interactive loop, full report, and three use-case reports, all live and version-controlled.</li>
+    <li>All Demo Day deliverables submitted: video, one-slide master deck, breakout-room deck, framing brief.</li>
+  </ul>
+
+  <h2><span class="dot">·</span> What went well</h2>
+  <ul>
+    <li>Collaboration produced more than three parallel solo tracks would have.</li>
+    <li>The loop's detect-and-prove machinery works: it caught a real gain and correctly refused to ship an unsafe one.</li>
+    <li>Delivered on time despite a tight weekend.</li>
+    <li>Plain HTML for the showcase paid off: agent-editable, versioned, hosted straight to Pages.</li>
+  </ul>
+
+  <h2><span class="dot">·</span> What was hard</h2>
+  <ul>
+    <li><b>Presentation prep was under-budgeted.</b> Too little time set aside for the demo and video led to a weekend coordination crunch.</li>
+    <li><b>AI video and design tools were the main friction.</b> NotebookLM took 30-60 minutes per video and produced the wrong length and off-target content despite explicit instructions; the video was finished by hand in CapCut. Design tools were hard to control and to collaborate in.</li>
+    <li><b>An internal tool is hard to sell.</b> The loop helps people working in the domain but is not user-visible, so demonstrating its value took extra framing.</li>
+    <li><b>We connected as a team late.</b> An earlier kickoff would have let us build the roadmap sooner.</li>
+  </ul>
+
+  <h2><span class="dot">·</span> Learnings</h2>
+  <ul>
+    <li><b>Plan before invoking the agent.</b> The biggest lever was time spent upfront defining scope, requirements, and context before handing work to an AI agent. Roughly 15 minutes of planning plus rich context first produced consistently better results.</li>
+    <li><b>AI agents need a well-defined scope, clear success criteria, and detailed requirements.</b> A vague ask produces a half-baked output. Knowing when not to use an agent matters as much as knowing when to.</li>
+    <li><b>Do not automate the thing you measure against.</b> Annotation stayed human on purpose; that is what let the loop stay trustworthy.</li>
+    <li><b>The optimizer is the real work.</b> Detecting and proving is solid. Writing a good fix on an already-tuned agent is the hard, unsolved part, and that is where the next effort goes.</li>
+  </ul>
+
+  <h2><span class="dot">·</span> Next steps</h2>
+  <ul>
+    <li>Brown bag session, roughly two weeks out: set it up with Frank; the team presents the loop pipeline, prepped jointly.</li>
+    <li>Budget presentation-planning time into future projects from the start.</li>
+    <li>Carry the planning-first habit into regular ticket work.</li>
+    <li>Explore transferring the loop principle to agent-mesh approaches.</li>
+  </ul>
+
+  <div class="foot">
+    Part of the <a href="index.html">Apex Loop showcase</a> · deck, interactive loop, and full report.
+  </div>
+</div>
+</body>
+</html>
